@@ -24,7 +24,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name]-[hash][extname]'
+        assetFileNames: (assetInfo) => {
+          // Conserver la structure pour les images dans public/
+          if (assetInfo.name && assetInfo.name.includes('icone_plugins')) {
+            return 'icone_plugins/[name]-[hash][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        }
       }
     }
   }

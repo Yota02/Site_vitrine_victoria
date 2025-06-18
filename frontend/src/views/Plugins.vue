@@ -54,7 +54,7 @@ const availablePlugins = ref([
     slug: "musique",
     description: "Création, composition et analyse musicale assistée par IA",
     icon: "🎵",
-    image: "./src/assets/icone_plugins/musique.png",
+    image: "/icone_plugins/musique.png",
     category: "Créatif",
     features: ["Composition automatique", "Analyse harmonique", "Génération de mélodies"]
   },
@@ -64,7 +64,7 @@ const availablePlugins = ref([
     slug: "chant",
     description: "Analyse vocale et assistance pour l'amélioration du chant",
     icon: "🎤",
-    image: "./src/assets/icone_plugins/chant.png",
+    image: "/icone_plugins/chant.png",
     category: "Créatif",
     features: ["Analyse de la voix", "Correction de pitch", "Exercices vocaux"]
   },
@@ -74,7 +74,7 @@ const availablePlugins = ref([
     slug: "gaming",
     description: "Outils de développement et d'assistance pour les jeux vidéo",
     icon: "🎮",
-    image: "./src/assets/icone_plugins/gaming.png",
+    image: "/icone_plugins/gaming.png",
     category: "Divertissement",
     features: ["IA de jeu", "Génération de niveaux", "Analytics de gameplay"]
   },
@@ -84,7 +84,7 @@ const availablePlugins = ref([
     slug: "peinture",
     description: "Assistance créative pour la peinture digitale et traditionnelle",
     icon: "🎨",
-    image: "./src/assets/icone_plugins/peinture.png",
+    image: "/icone_plugins/peinture.png",
     category: "Créatif",
     features: ["Palette de couleurs", "Styles artistiques", "Critiques constructives"]
   },
@@ -94,7 +94,7 @@ const availablePlugins = ref([
     slug: "meteo",
     description: "Prévisions météorologiques avancées et analyses climatiques",
     icon: "🌤️",
-    image: "./src/assets/icone_plugins/meteo.png",
+    image: "/icone_plugins/meteo.png",
     category: "Utilitaire",
     features: ["Prévisions précises", "Alertes météo", "Analyse climatique"]
   },
@@ -104,7 +104,7 @@ const availablePlugins = ref([
     slug: "calendrier",
     description: "Gestion intelligente du temps et planification automatisée",
     icon: "📅",
-    image: "./src/assets/icone_plugins/calendrier.png",
+    image: "/icone_plugins/calendrier.png",
     category: "Productivité",
     features: ["Planification IA", "Rappels intelligents", "Optimisation d'agenda"]
   },
@@ -114,7 +114,7 @@ const availablePlugins = ref([
     slug: "convertisseur",
     description: "Conversion universelle d'unités, devises et formats",
     icon: "🔄",
-    image: "./src/assets/icone_plugins/convertisseur.png",
+    image: "/icone_plugins/convertisseur.png",
     category: "Utilitaire",
     features: ["Multi-devises", "Unités physiques", "Formats de fichiers"]
   },
@@ -124,7 +124,7 @@ const availablePlugins = ref([
     slug: "reve",
     description: "Analyse et interprétation des rêves avec IA",
     icon: "💭",
-    image: "./src/assets/icone_plugins/reve.png",
+    image: "/icone_plugins/reve.png",
     category: "Bien-être",
     features: ["Interprétation symbolique", "Journal de rêves", "Analyse psychologique"]
   },
@@ -134,7 +134,7 @@ const availablePlugins = ref([
     slug: "emotion",
     description: "Reconnaissance et analyse des émotions en temps réel",
     icon: "😊",
-    image: "./src/assets/icone_plugins/emotion.png",
+    image: "/icone_plugins/emotion.png",
     category: "Psychologie",
     features: ["Détection faciale", "Analyse vocale", "Suivi émotionnel"]
   }
