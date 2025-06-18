@@ -524,6 +524,7 @@ const developmentPlugins = computed(() =>
   
   .plugins-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .plugin-banner {
@@ -541,11 +542,116 @@ const developmentPlugins = computed(() =>
   .status-filters {
     flex-direction: column;
     align-items: center;
+    gap: 0.75rem;
   }
   
   .filter-btn {
     width: 100%;
     max-width: 250px;
+  }
+  
+  .status-badge {
+    top: 8px;
+    right: 8px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .progress-section {
+    margin: 1rem 0;
+    padding: 0.8rem;
+  }
+  
+  .plugin-features {
+    gap: 0.4rem;
+  }
+  
+  .feature-tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 1.75rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-section {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .content {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .plugin-content {
+    padding: 1.25rem;
+  }
+  
+  .plugin-name {
+    font-size: 1.2rem;
+  }
+  
+  .plugin-description {
+    font-size: 0.9rem;
+  }
+  
+  .filters-section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .filter-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .status-badge {
+    position: static;
+    margin-bottom: 0.5rem;
+    align-self: flex-start;
+  }
+  
+  .plugin-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+    min-height: 80px;
+  }
+  
+  .plugin-icon {
+    position: relative;
+    width: 100%;
+    height: 60px;
+  }
+  
+  .plugin-icon img {
+    height: 60px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-section h1 {
+    font-size: 1.5rem;
+  }
+  
+  .plugin-content {
+    padding: 1rem;
+  }
+  
+  .feature-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+  }
+  
+  .btn-details {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
   }
 }
 </style>

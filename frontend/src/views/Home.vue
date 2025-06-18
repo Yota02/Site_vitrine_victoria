@@ -18,7 +18,7 @@ import LocalAdvantages from '../components/LocalAdvantages.vue'
 
 <style scoped>
 .home {
-  padding-top: 20px; /* Réduction de l'espace avec la navbar */
+  padding-top: 20px;
 }
 
 .main-content {
@@ -28,8 +28,28 @@ import LocalAdvantages from '../components/LocalAdvantages.vue'
 }
 
 @media (max-width: 768px) {
+  .home {
+    padding-top: 15px;
+  }
+  
   .main-content {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    padding-top: 10px;
+  }
+  
+  .main-content {
+    padding: 1rem 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .main-content {
+    padding: 0.75rem 0.5rem;
   }
 }
 </style>

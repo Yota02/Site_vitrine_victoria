@@ -462,6 +462,7 @@ const submitForm = async () => {
   
   .form-row {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
   .contact-stats {
@@ -479,8 +480,89 @@ const submitForm = async () => {
     font-size: 2rem;
   }
   
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-section {
+    padding: 2rem 0.75rem;
+  }
+  
+  .content {
+    padding: 2rem 0.75rem;
+  }
+  
   .contact-info, .contact-form {
     padding: 1.5rem;
+  }
+  
+  .info-item {
+    padding: 0.875rem;
+    gap: 1rem;
+  }
+  
+  .info-icon {
+    min-width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .info-item h3 {
+    font-size: 1.1rem;
+  }
+  
+  .contact-info h2, .contact-form h2 {
+    font-size: 1.6rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.95rem;
+  }
+  
+  .submit-btn {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-section h1 {
+    font-size: 1.75rem;
+  }
+  
+  .hero-section {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .content {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .contact-info, .contact-form {
+    padding: 1.25rem;
+  }
+  
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.75rem;
+  }
+  
+  .info-icon {
+    align-self: center;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.6rem 0.75rem;
+  }
+  
+  .submit-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
   }
 }
 </style>

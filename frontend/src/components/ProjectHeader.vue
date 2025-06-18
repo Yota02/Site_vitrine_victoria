@@ -268,6 +268,7 @@ export default {
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  padding: 0 1rem; /* Ajout d'un padding horizontal */
 }
 
 .header-content {
@@ -548,59 +549,84 @@ export default {
 
 @media (max-width: 768px) {
   .project-header {
-    padding: 1.5rem 1rem 3rem 1rem; /* Réduction du padding pour mobile */
-    min-height: 55vh; /* Réduction pour mobile */
+    padding: 2rem 1rem 3rem 1rem;
+    min-height: 60vh;
   }
   
   .title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
   }
   
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
   }
   
   .description {
     font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
   }
   
   .key-benefits {
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
   }
   
   .benefit-item {
-    padding: 1rem;
+    padding: 1.2rem;
+    border-radius: 12px;
   }
   
   .benefit-icon {
     font-size: 2rem;
   }
   
+  .benefit-text strong {
+    font-size: 1rem;
+  }
+  
+  .benefit-text span {
+    font-size: 0.85rem;
+  }
+  
   .header-stats {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.8rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
   }
   
   .cta-buttons {
     flex-direction: column;
     width: 100%;
+    gap: 0.8rem;
   }
   
   .btn-primary, .btn-secondary {
     width: 100%;
     max-width: 300px;
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
   }
   
   .floating-icon {
-    width: 70px;   /* Augmenté de 40px à 70px */
-    height: 70px;  /* Augmenté de 40px à 70px */
+    width: 70px;
+    height: 70px;
   }
   
   .silhouette {
-    width: 80px;   /* Augmenté de 50px à 80px */
-    height: 80px;  /* Augmenté de 50px à 80px */
+    width: 80px;
+    height: 80px;
   }
   
   .silhouette-track {
@@ -609,23 +635,171 @@ export default {
 }
 
 @media (max-width: 480px) {
+  .project-header {
+    padding: 1.5rem 0.8rem 2.5rem 0.8rem;
+    min-height: 55vh;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+  
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .description {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    padding: 0 0.5rem;
+    line-height: 1.5;
+  }
+  
+  .key-benefits {
+    margin: 1.2rem 0;
+    gap: 0.8rem;
+  }
+  
+  .benefit-item {
+    padding: 1rem;
+    gap: 0.8rem;
+    border-radius: 10px;
+  }
+  
+  .benefit-icon {
+    font-size: 1.8rem;
+  }
+  
+  .benefit-text strong {
+    font-size: 0.95rem;
+  }
+  
+  .benefit-text span {
+    font-size: 0.8rem;
+  }
+  
   .header-stats {
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    margin-bottom: 1.2rem;
+    max-width: 280px;
   }
   
   .stat-item {
-    flex-direction: row;
-    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  .cta-buttons {
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 1rem 1.5rem;
+    font-size: 0.95rem;
+    min-width: auto;
+    border-radius: 10px;
+  }
+  
+  .btn-icon {
+    font-size: 1rem;
   }
   
   .silhouette {
-    width: 60px;   /* Augmenté de 40px à 60px */
-    height: 60px;  /* Augmenté de 40px à 60px */
+    width: 60px;
+    height: 60px;
   }
   
   .silhouette-track {
     gap: 3rem;
+  }
+  
+  .bubble {
+    max-width: 15px;
+    max-height: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .project-header {
+    padding: 1.2rem 0.5rem 2rem 0.5rem;
+    min-height: 50vh;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    padding: 0 0.2rem;
+  }
+  
+  .key-benefits {
+    margin: 1rem 0;
+    gap: 0.6rem;
+  }
+  
+  .benefit-item {
+    padding: 0.8rem;
+    gap: 0.6rem;
+  }
+  
+  .benefit-icon {
+    font-size: 1.5rem;
+  }
+  
+  .benefit-text strong {
+    font-size: 0.9rem;
+  }
+  
+  .benefit-text span {
+    font-size: 0.75rem;
+  }
+  
+  .header-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    max-width: 250px;
+  }
+  
+  .stat-number {
+    font-size: 1.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.9rem;
   }
 }
 </style>
