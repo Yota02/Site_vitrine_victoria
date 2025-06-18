@@ -89,15 +89,15 @@ export default {
       isTransitioning: false,
       rotationTimer: null,
       silhouetteImages: [
-        '/src/assets/icone_plugins/musique.png',
-        '/src/assets/icone_plugins/chant.png',
-        '/src/assets/icone_plugins/convertisseur.png',
-        '/src/assets/icone_plugins/emotion.png',
-        '/src/assets/icone_plugins/gaming.png',
-        '/src/assets/icone_plugins/meteo.png',
-        '/src/assets/icone_plugins/calendrier.png',
-        '/src/assets/icone_plugins/peinture.png',
-        '/src/assets/icone_plugins/reve.png'
+        '/icone_plugins/musique.png',
+        '/icone_plugins/chant.png',
+        '/icone_plugins/convertisseur.png',
+        '/icone_plugins/emotion.png',
+        '/icone_plugins/gaming.png',
+        '/icone_plugins/meteo.png',
+        '/icone_plugins/calendrier.png',
+        '/icone_plugins/peinture.png',
+        '/icone_plugins/reve.png'
       ]
     }
   },

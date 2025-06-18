@@ -18,5 +18,7 @@ export default defineConfig({
   // Configuration pour les assets statiques
   publicDir: 'public',
   // Configuration pour GitHub Pages
-  base: process.env.NODE_ENV === 'production' ? '/Site_vitrine_victoria/' : '/'
+  base: process.env.NODE_ENV === 'production' ? '/Site_vitrine_victoria/' : '/',
+  // Configuration des assets
+  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.ico']
 })

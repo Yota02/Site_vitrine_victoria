@@ -4,7 +4,7 @@
       <!-- Logo et titre -->
       <router-link to="/" class="navbar-brand" @click="closeMenu">
         <span class="brand-text">
-          <img src="../assets/victoria_icone.png" alt="VictorIA Logo" class="brand-icon" />
+          <img src="/victoria_icone.png" alt="VictorIA Logo" class="brand-icon" />
           <span class="brand-name">VictorIA</span>
         </span>
       </router-link>
