@@ -60,7 +60,7 @@
       </div>
     </div>
     
-    <div class="technical-explanation">
+    <!-- <div class="technical-explanation">
       <h3>💻 Fonctionnement Technique</h3>
       <div class="tech-steps">
         <div class="tech-step">
@@ -87,7 +87,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -120,7 +120,7 @@ const capabilities = [
     ],
     privacyNote: 'Vos documents restent sur votre disque dur'
   },
-  {
+  /* {
     id: 3,
     name: 'Assistant Créatif',
     icon: '🎨',
@@ -132,7 +132,7 @@ const capabilities = [
       'Amélioration et optimisation du contenu'
     ],
     privacyNote: 'Votre style créatif reste confidentiel'
-  },
+  }, */
   {
     id: 4,
     name: 'Organisateur Personnel',
@@ -146,7 +146,7 @@ const capabilities = [
     ],
     privacyNote: 'Votre emploi du temps reste privé'
   },
-  {
+  /* {
     id: 5,
     name: 'Analyse de Données',
     icon: '📊',
@@ -158,7 +158,7 @@ const capabilities = [
       'Insights et recommandations personnalisées'
     ],
     privacyNote: 'Vos données sensibles ne sortent pas de chez vous'
-  }
+  } */
 ]
 </script>
 

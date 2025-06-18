@@ -2,8 +2,8 @@
   <div class="research">
     <div class="hero-section">
       <div class="container">
-        <h1>Nos Recherches</h1>
-        <p class="hero-subtitle">Exploration des frontières de l'intelligence artificielle conversationnelle</p>
+        <h1>Mon Projet de Recherche</h1>
+        <p class="hero-subtitle">Développement d'un LLM personnalisé et étude de l'humanisation de l'IA</p>
       </div>
     </div>
     
@@ -11,33 +11,33 @@
       <div class="container">
         <div class="research-areas">
           <div class="research-card">
-            <div class="card-icon">🧠</div>
-            <h3>Traitement du Langage Naturel</h3>
-            <p>Développement d'algorithmes avancés pour la compréhension et la génération de langage naturel.</p>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 85%"></div>
+            <div class="card-icon">🤖</div>
+            <h3>Développement LLM Personnalisé</h3>
+            <p>Conception et entraînement d'un modèle de langage adapté aux besoins spécifiques de l'utilisateur.</p>
+            <!-- <div class="progress-bar">
+              <div class="progress-fill" style="width: 60%"></div>
             </div>
-            <span class="progress-text">85% complété</span>
+            <span class="progress-text">60% complété</span> -->
           </div>
           
           <div class="research-card">
-            <div class="card-icon">🎯</div>
-            <h3>Apprentissage Contextuel</h3>
-            <p>Méthodes d'apprentissage permettant à l'IA de s'adapter au contexte conversationnel.</p>
-            <div class="progress-bar">
+            <div class="card-icon">👤</div>
+            <h3>Humanisation de l'IA</h3>
+            <p>Recherche sur les techniques pour rendre l'intelligence artificielle plus naturelle et empathique dans ses interactions.</p>
+            <!-- <div class="progress-bar">
               <div class="progress-fill" style="width: 45%"></div>
             </div>
-            <span class="progress-text">45% complété</span>
+            <span class="progress-text">45% complété</span> -->
           </div>
           
           <div class="research-card">
-            <div class="card-icon">🔊</div>
-            <h3>Reconnaissance Vocale</h3>
-            <p>Systèmes de reconnaissance et de synthèse vocale multilingues haute précision.</p>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 70%"></div>
+            <div class="card-icon">📈</div>
+            <h3>Étude Comportementale</h3>
+            <p>Analyse des réactions et comportements humains face à une IA humanisée à travers des tests et observations.</p>
+            <!-- <div class="progress-bar">
+              <div class="progress-fill" style="width: 30%"></div>
             </div>
-            <span class="progress-text">70% complété</span>
+            <span class="progress-text">30% complété</span> -->
           </div>
         </div>
       </div>
@@ -70,8 +70,8 @@
 .hero-subtitle {
   font-size: 1.2rem;
   opacity: 0.9;
-  max-width: 600px;
   margin: 0 auto;
+  white-space: nowrap;
 }
 
 .content {
@@ -84,9 +84,10 @@
 }
 
 .research-areas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  display: flex;
   gap: 2rem;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 
 .research-card {
@@ -96,6 +97,9 @@
   padding: 2rem;
   text-align: center;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
 }
 
 .research-card:hover {
@@ -146,6 +150,11 @@
     font-size: 2rem;
   }
   
+  .hero-subtitle {
+    font-size: 1rem;
+    white-space: normal;
+  }
+  
   .hero-section {
     padding: 2rem 1rem;
   }
@@ -155,7 +164,7 @@
   }
   
   .research-areas {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 }
 </style>

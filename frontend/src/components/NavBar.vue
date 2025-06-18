@@ -63,7 +63,7 @@
             <div class="nav-indicator"></div>
           </router-link>
           
-          <router-link 
+          <!-- <router-link 
             to="/publications" 
             class="nav-item" 
             @click="closeMenu"
@@ -80,7 +80,7 @@
             </div>
             <span class="nav-text">Publications</span>
             <div class="nav-indicator"></div>
-          </router-link>
+          </router-link> -->
           
           <router-link 
             to="/contact" 

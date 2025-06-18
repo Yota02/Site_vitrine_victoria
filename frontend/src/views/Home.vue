@@ -2,7 +2,7 @@
   <div class="home">
     <ProjectHeader />
     <main class="main-content">
-      <ProgressOverview />
+      <!-- <ProgressOverview /> -->
       <LocalAdvantages />
       <ModulesList />
     </main>

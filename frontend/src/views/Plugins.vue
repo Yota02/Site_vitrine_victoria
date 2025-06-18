@@ -108,60 +108,67 @@ const statusFilter = ref('all')
 const availablePlugins = ref([
   {
     id: 1,
-    name: "Plugin Musique",
-    slug: "musique",
-    description: "Création, composition et analyse musicale assistée par IA",
-    icon: "🎵",
-    image: musiqueImg,
-    category: "Créatif",
-    features: ["Composition automatique", "Analyse harmonique", "Génération de mélodies"],
-    status: "completed"
+    name: "Plugin Émotion",
+    slug: "emotion",
+    description: "L'IA simule et affiche des émotions de manière expressive",
+    icon: "😊",
+    image: emotionImg,
+    category: "Psychologie",
+    features: ["Simulation d'émotions", "Affichage expressif", "Réactions émotionnelles"],
+    status: "completed",
+    /* status: "development",
+    progress: 85 */
   },
   {
     id: 2,
     name: "Plugin Chant",
     slug: "chant",
-    description: "Analyse vocale et assistance pour l'amélioration du chant",
+    description: "L'IA peut chanter des chansons et créer des performances vocales",
     icon: "🎤",
     image: chantImg,
     category: "Créatif",
-    features: ["Analyse de la voix", "Correction de pitch", "Exercices vocaux"],
-    status: "completed"
+    features: ["Chant par l'IA", "Performance vocale", "Interprétation musicale"],
+    /* status: "completed", */
+    status: "development",
+    progress: 0
   },
   {
     id: 3,
     name: "Plugin Gaming",
     slug: "gaming",
-    description: "Outils de développement et d'assistance pour les jeux vidéo",
+    description: "L'IA peut jouer à différents jeux vidéo et défier les utilisateurs",
     icon: "🎮",
     image: gamingImg,
     category: "Divertissement",
-    features: ["IA de jeu", "Génération de niveaux", "Analytics de gameplay"],
+    features: ["Jeu par l'IA", "Stratégies adaptatives", "Défis multijoueurs"],
     status: "development",
-    progress: 75
+    progress: 0
   },
   {
     id: 4,
     name: "Plugin Peinture",
     slug: "peinture",
-    description: "Assistance créative pour la peinture digitale et traditionnelle",
+    description: "L'IA peut créer des œuvres d'art et peindre dans différents styles",
     icon: "🎨",
     image: peintureImg,
     category: "Créatif",
-    features: ["Palette de couleurs", "Styles artistiques", "Critiques constructives"],
+    features: ["Peinture par l'IA", "Styles artistiques", "Création d'œuvres"],
+    /* status: "completed", */
     status: "development",
-    progress: 60
+    progress: 0
   },
   {
     id: 5,
     name: "Plugin Météo",
     slug: "meteo",
-    description: "Prévisions météorologiques avancées et analyses climatiques",
+    description: "L'IA vous informe de la météo du jour et de la semaine avec conscience du temps qu'il fait",
     icon: "🌤️",
     image: meteoImg,
     category: "Utilitaire",
-    features: ["Prévisions précises", "Alertes météo", "Analyse climatique"],
-    status: "completed"
+    features: ["Annonce météo par l'IA", "Prévisions personnalisées", "Conscience climatique"],
+    /* status: "completed", */
+    status: "development",
+    progress: 40
   },
   {
     id: 6,
@@ -172,8 +179,9 @@ const availablePlugins = ref([
     image: calendrierImg,
     category: "Productivité",
     features: ["Planification IA", "Rappels intelligents", "Optimisation d'agenda"],
+    /* status: "completed", */
     status: "development",
-    progress: 45
+    progress: 0
   },
   {
     id: 7,
@@ -184,32 +192,36 @@ const availablePlugins = ref([
     image: convertisseurImg,
     category: "Utilitaire",
     features: ["Multi-devises", "Unités physiques", "Formats de fichiers"],
-    status: "completed"
+    /* status: "completed", */
+    status: "development",
+    progress: 0
   },
   {
     id: 8,
     name: "Plugin Rêve",
     slug: "reve",
-    description: "Analyse et interprétation des rêves avec IA",
+    description: "L'IA fait des rêves et gère sa mémoire à travers des expériences oniriques",
     icon: "💭",
     image: reveImg,
     category: "Bien-être",
-    features: ["Interprétation symbolique", "Journal de rêves", "Analyse psychologique"],
+    features: ["Rêves de l'IA", "Gestion mémoire", "Expériences oniriques"],
+    /* status: "completed", */
     status: "development",
-    progress: 30
+    progress: 45
   },
   {
     id: 9,
-    name: "Plugin Émotion",
-    slug: "emotion",
-    description: "Reconnaissance et analyse des émotions en temps réel",
-    icon: "😊",
-    image: emotionImg,
-    category: "Psychologie",
-    features: ["Détection faciale", "Analyse vocale", "Suivi émotionnel"],
+    name: "Plugin Musique",
+    slug: "musique",
+    description: "L'IA peut jouer a des instruments et lire des partitions musicales",
+    icon: "🎵",
+    image: musiqueImg,
+    category: "Créatif",
+    features: ["Jeu au instruments", "Lecture de partitions", "Interprétation musicale"],
+    /* status: "completed", */
     status: "development",
-    progress: 85
-  }
+    progress: 60
+  },
 ])
 
 const filteredPlugins = computed(() => {

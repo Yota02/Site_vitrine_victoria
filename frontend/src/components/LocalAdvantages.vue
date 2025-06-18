@@ -9,8 +9,8 @@
       <div class="comparison-card local">
         <div class="card-header">
           <div class="card-icon">🏠</div>
-          <h3>VictorIA (Local)</h3>
-          <span class="badge recommended">Recommandé</span>
+          <h3>VictorIA</h3>
+          <span class="badge recommended">Local</span>
         </div>
         
         <div class="features-list">
@@ -18,10 +18,10 @@
             <span class="feature-icon">✅</span>
             <span>Données 100% privées</span>
           </div>
-          <div class="feature-item positive">
+          <!-- <div class="feature-item positive">
             <span class="feature-icon">✅</span>
             <span>Réponse instantanée (&lt;50ms)</span>
-          </div>
+          </div> -->
           <div class="feature-item positive">
             <span class="feature-icon">✅</span>
             <span>Aucune connexion requise</span>
@@ -44,8 +44,8 @@
       <div class="comparison-card cloud">
         <div class="card-header">
           <div class="card-icon">☁️</div>
-          <h3>IA Cloud (Autres)</h3>
-          <span class="badge standard">Standard</span>
+          <h3>IA Cloud</h3>
+          <span class="badge standard">En ligne</span>
         </div>
         
         <div class="features-list">
@@ -53,10 +53,10 @@
             <span class="feature-icon">❌</span>
             <span>Données envoyées vers serveurs</span>
           </div>
-          <div class="feature-item neutral">
+          <!-- <div class="feature-item neutral">
             <span class="feature-icon">⚠️</span>
             <span>Latence réseau (200ms+)</span>
-          </div>
+          </div> -->
           <div class="feature-item negative">
             <span class="feature-icon">❌</span>
             <span>Connexion internet obligatoire</span>
@@ -84,11 +84,11 @@
         <div class="stat-description">Vos informations restent chez vous</div>
       </div>
       
-      <div class="stat-showcase-item">
+      <!-- <div class="stat-showcase-item">
         <div class="stat-big">&lt;50ms</div>
         <div class="stat-label">Temps de réponse</div>
         <div class="stat-description">10x plus rapide que le cloud</div>
-      </div>
+      </div> -->
       
       <div class="stat-showcase-item">
         <div class="stat-big">∞</div>
@@ -336,7 +336,7 @@
 
 .security-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
