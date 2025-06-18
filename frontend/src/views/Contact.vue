@@ -196,7 +196,7 @@ const submitForm = async () => {
   background: var(--color-background);
   color: var(--color-text);
   font-size: 1rem;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-group input:focus,

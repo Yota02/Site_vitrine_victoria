@@ -4,6 +4,7 @@ import Publications from '../views/Publications.vue'
 import Contact from '../views/Contact.vue'
 import Plugins from '../views/Plugins.vue'
 import PluginDetail from '../views/PluginDetail.vue'
+import Research from '../views/Research.vue'
 
 const routes = [
   {
@@ -44,6 +45,14 @@ const routes = [
     component: Contact,
     meta: {
       title: 'Contact - IA Conversationnelle'
+    }
+  },
+  {
+    path: '/research',
+    name: 'Research',
+    component: Research,
+    meta: {
+      title: 'Recherches - IA Conversationnelle'
     }
   }
 ]

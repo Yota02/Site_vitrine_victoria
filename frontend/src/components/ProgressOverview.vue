@@ -162,7 +162,7 @@ const overallProgress = computed(() => {
   border-radius: 16px;
   text-align: center;
   border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }

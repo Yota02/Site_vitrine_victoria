@@ -47,6 +47,23 @@
           </router-link>
           
           <router-link 
+            to="/research" 
+            class="nav-item" 
+            @click="closeMenu"
+            :class="{ 'active': $route.path === '/research' }"
+          >
+            <div class="nav-icon-wrapper">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+                <circle cx="11" cy="11" r="3"/>
+              </svg>
+            </div>
+            <span class="nav-text">Recherches</span>
+            <div class="nav-indicator"></div>
+          </router-link>
+          
+          <router-link 
             to="/publications" 
             class="nav-item" 
             @click="closeMenu"
@@ -151,7 +168,7 @@ onUnmounted(() => {
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(37, 99, 235, 0.1);
   z-index: 1000;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0);
 }
 

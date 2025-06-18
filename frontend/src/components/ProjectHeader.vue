@@ -1,13 +1,16 @@
 <template>
   <header class="project-header">
     <div class="hero-background">
-      <div class="floating-elements">
-        <div class="floating-icon">🤖</div>
-        <div class="floating-icon">💻</div>
-        <div class="floating-icon">🔒</div>
-        <div class="floating-icon">⚡</div>
-        <div class="floating-icon">🏠</div>
-        <div class="floating-icon">🛠️</div>
+      <!-- Image de fond fixe avec rotation -->
+      <div class="background-image">
+        <img 
+          :src="currentImage" 
+          alt="Background" 
+          :class="{ 'fade-out': isTransitioning }"
+          ref="backgroundImg"
+        />
+        <!-- Particules de bulles pour l'animation -->
+        <div class="bubble-particles" ref="bubbleContainer"></div>
       </div>
     </div>
     <div class="container">
@@ -61,12 +64,7 @@
             <span class="stat-label">Utilisation</span>
           </div>
         </div>
-        
-        <div class="status-badge">
-          <span class="status-indicator"></span>
-          Système Opérationnel - Prêt à l'emploi
-        </div>
-        
+      
         <div class="cta-buttons">
           <router-link to="/plugins" class="btn-primary">
             <span class="btn-icon">🔧</span>
@@ -81,6 +79,95 @@
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  name: 'ProjectHeader',
+  data() {
+    return {
+      currentImageIndex: 0,
+      isTransitioning: false,
+      rotationTimer: null,
+      silhouetteImages: [
+        '/src/assets/icone_plugins/musique.png',
+        '/src/assets/icone_plugins/chant.png',
+        '/src/assets/icone_plugins/convertisseur.png',
+        '/src/assets/icone_plugins/emotion.png',
+        '/src/assets/icone_plugins/gaming.png',
+        '/src/assets/icone_plugins/meteo.png',
+        '/src/assets/icone_plugins/calendrier.png',
+        '/src/assets/icone_plugins/peinture.png',
+        '/src/assets/icone_plugins/reve.png'
+      ]
+    }
+  },
+  computed: {
+    currentImage() {
+      return this.silhouetteImages[this.currentImageIndex];
+    }
+  },
+  mounted() {
+    this.startImageRotation();
+  },
+  beforeUnmount() {
+    if (this.rotationTimer) {
+      clearInterval(this.rotationTimer);
+    }
+  },
+  methods: {
+    startImageRotation() {
+      this.rotationTimer = setInterval(() => {
+        this.changeImage();
+      }, 10000); // 10 secondes
+    },
+    
+    changeImage() {
+      this.isTransitioning = true;
+      this.createBubbles();
+      
+      setTimeout(() => {
+        this.currentImageIndex = (this.currentImageIndex + 1) % this.silhouetteImages.length;
+        this.isTransitioning = false;
+      }, 1000);
+    },
+    
+    createBubbles() {
+      const container = this.$refs.bubbleContainer;
+      if (!container) return;
+      
+      // Nettoyer les anciennes bulles
+      container.innerHTML = '';
+      
+      // Créer 30 bulles
+      for (let i = 0; i < 30; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        
+        // Position aléatoire
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const size = Math.random() * 20 + 5; // Taille entre 5px et 25px
+        const delay = Math.random() * 0.5; // Délai jusqu'à 0.5s
+        
+        bubble.style.left = x + '%';
+        bubble.style.top = y + '%';
+        bubble.style.width = size + 'px';
+        bubble.style.height = size + 'px';
+        bubble.style.animationDelay = delay + 's';
+        
+        container.appendChild(bubble);
+        
+        // Supprimer la bulle après l'animation
+        setTimeout(() => {
+          if (bubble.parentNode) {
+            bubble.parentNode.removeChild(bubble);
+          }
+        }, 2000 + delay * 1000);
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 .project-header {
@@ -105,58 +192,68 @@
   overflow: hidden;
 }
 
-.floating-elements {
-  position: relative;
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-image img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+  transition: opacity 1s ease-in-out;
 }
 
-.floating-icon {
+.background-image img.fade-out {
+  opacity: 0.2;
+}
+
+.bubble-particles {
   position: absolute;
-  font-size: 3rem;
-  animation: float 6s ease-in-out infinite;
-  opacity: 0.3;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.floating-icon:nth-child(1) {
-  top: 20%;
-  left: 10%;
-  animation-delay: 0s;
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: bubbleFloat 2s ease-out forwards;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.floating-icon:nth-child(2) {
-  top: 60%;
-  right: 15%;
-  animation-delay: 1.5s;
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-100px) scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-200px) scale(0);
+    opacity: 0;
+  }
 }
 
-.floating-icon:nth-child(3) {
-  bottom: 30%;
-  left: 20%;
-  animation-delay: 3s;
-}
-
-.floating-icon:nth-child(4) {
-  top: 30%;
-  right: 25%;
-  animation-delay: 4.5s;
-}
-
-.floating-icon:nth-child(5) {
-  top: 70%;
-  left: 5%;
-  animation-delay: 2s;
-}
-
-.floating-icon:nth-child(6) {
-  bottom: 20%;
-  right: 30%;
-  animation-delay: 5s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+/* Masquer les anciens éléments animés */
+.floating-elements,
+.scrolling-silhouettes {
+  display: none;
 }
 
 .container {
@@ -371,6 +468,72 @@
   font-size: 1.1rem;
 }
 
+.scrolling-silhouettes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.silhouette-track {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+  white-space: nowrap;
+  animation: scrollLeft 60s linear infinite;
+}
+
+.silhouette-track:first-child {
+  top: 20%;
+  left: 0;
+}
+
+.silhouette-track-reverse {
+  top: 60%;
+  right: 0;
+  animation: scrollRight 45s linear infinite;
+}
+
+.silhouette {
+  width: 120px;    /* Augmenté de 80px à 120px */
+  height: 120px;   /* Augmenté de 80px à 120px */
+  flex-shrink: 0;
+  user-select: none;
+  filter: blur(1px);
+}
+
+.silhouette img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.7; transform: scale(1.1); }
@@ -424,7 +587,17 @@
   }
   
   .floating-icon {
-    font-size: 2rem;
+    width: 70px;   /* Augmenté de 40px à 70px */
+    height: 70px;  /* Augmenté de 40px à 70px */
+  }
+  
+  .silhouette {
+    width: 80px;   /* Augmenté de 50px à 80px */
+    height: 80px;  /* Augmenté de 50px à 80px */
+  }
+  
+  .silhouette-track {
+    gap: 4rem;
   }
 }
 
@@ -437,6 +610,15 @@
   .stat-item {
     flex-direction: row;
     gap: 0.5rem;
+  }
+  
+  .silhouette {
+    width: 60px;   /* Augmenté de 40px à 60px */
+    height: 60px;  /* Augmenté de 40px à 60px */
+  }
+  
+  .silhouette-track {
+    gap: 3rem;
   }
 }
 </style>

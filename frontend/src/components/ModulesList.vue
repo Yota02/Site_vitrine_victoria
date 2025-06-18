@@ -1,126 +1,90 @@
 <template>
   <section class="modules-list">
     <div class="section-header">
-      <h2>Plugins & Capacités Utilitaires</h2>
-      <p class="section-subtitle">Des outils IA spécialisés qui fonctionnent 100% en local pour préserver votre confidentialité</p>
+      <h2>Comment Fonctionne VictorIA ?</h2>
+      <p class="section-subtitle">Une IA locale spécialisée avec des capacités modulaires pour préserver votre confidentialité</p>
     </div>
     
-    <div class="utility-highlights">
-      <div class="highlight-item">
-        <div class="highlight-icon">🔒</div>
-        <div class="highlight-content">
-          <h3>Confidentialité Absolue</h3>
-          <p>Tous les traitements s'effectuent sur votre machine. Vos données personnelles ne quittent jamais votre ordinateur.</p>
+    <div class="working-principles">
+      <div class="principle-item">
+        <div class="principle-icon">🏠</div>
+        <div class="principle-content">
+          <h3>Traitement 100% Local</h3>
+          <p>VictorIA fonctionne entièrement sur votre machine. Aucune donnée n'est envoyée vers des serveurs externes, garantissant une confidentialité absolue.</p>
         </div>
       </div>
       
-      <div class="highlight-item">
-        <div class="highlight-icon">⚡</div>
-        <div class="highlight-content">
-          <h3>Performance Optimale</h3>
-          <p>Aucune latence réseau, traitement instantané adapté à votre matériel pour une expérience fluide.</p>
+      <div class="principle-item">
+        <div class="principle-icon">🧩</div>
+        <div class="principle-content">
+          <h3>Architecture Modulaire</h3>
+          <p>Chaque capacité est un module spécialisé qui peut être activé selon vos besoins, optimisant les ressources de votre ordinateur.</p>
         </div>
       </div>
       
-      <div class="highlight-item">
-        <div class="highlight-icon">🛠️</div>
-        <div class="highlight-content">
-          <h3>Outils Spécialisés</h3>
-          <p>Chaque plugin est conçu pour une tâche spécifique : productivité, créativité, analyse, communication.</p>
+      <div class="principle-item">
+        <div class="principle-icon">⚡</div>
+        <div class="principle-content">
+          <h3>Optimisation Matérielle</h3>
+          <p>VictorIA s'adapte automatiquement aux capacités de votre machine pour offrir les meilleures performances possibles.</p>
         </div>
       </div>
     </div>
     
-    <div class="filter-tabs">
-      <button 
-        v-for="filter in filters" 
-        :key="filter.value"
-        @click="activeFilter = filter.value"
-        :class="['filter-tab', { active: activeFilter === filter.value }]"
-      >
-        {{ filter.label }}
-      </button>
-    </div>
-    
-    <div class="modules-grid">
+    <div class="capabilities-grid">
       <div 
-        v-for="module in filteredModules" 
-        :key="module.id"
-        class="module-card"
-        :class="{ 'completed': module.completed, 'priority': module.priority }"
+        v-for="capability in capabilities" 
+        :key="capability.id"
+        class="capability-card"
       >
-        <div class="module-header">
-          <div class="module-title-section">
-            <h3>{{ module.name }}</h3>
-            <div class="module-badges">
-              <span v-if="module.completed" class="status-badge completed">
-                <span class="badge-icon">✓</span>
-                Opérationnel
-              </span>
-              <span v-else-if="module.progress > 0" class="status-badge in-progress">
-                <span class="badge-icon">⚡</span>
-                En développement
-              </span>
-              <span v-else class="status-badge planned">
-                <span class="badge-icon">📋</span>
-                Planifié
-              </span>
-              <span v-if="module.isCore" class="core-badge">
-                <span class="badge-icon">⭐</span>
-                Essentiel
-              </span>
-            </div>
-          </div>
-          <div class="module-icon">{{ module.icon }}</div>
+        <div class="capability-header">
+          <div class="capability-icon">{{ capability.icon }}</div>
+          <h3>{{ capability.name }}</h3>
         </div>
         
-        <p class="module-description">{{ module.description }}</p>
+        <p class="capability-description">{{ capability.description }}</p>
         
-        <div class="utility-focus">
-          <h4>💡 Cas d'usage pratiques:</h4>
-          <ul class="use-cases">
-            <li v-for="useCase in module.useCases" :key="useCase">
-              <span class="use-case-icon">→</span>
-              {{ useCase }}
-            </li>
+        <div class="how-it-works">
+          <h4>🔧 Comment ça fonctionne :</h4>
+          <ul class="working-steps">
+            <li v-for="step in capability.workingSteps" :key="step">{{ step }}</li>
           </ul>
         </div>
         
-        <div class="module-progress">
-          <div class="progress-header">
-            <span>État de développement</span>
-            <span class="progress-percentage">{{ module.progress }}%</span>
+        <div class="privacy-focus">
+          <div class="privacy-badge">
+            <span class="privacy-icon">🔒</span>
+            <span>{{ capability.privacyNote }}</span>
           </div>
-          <div class="progress-bar">
-            <div 
-              class="progress-fill" 
-              :style="{ width: module.progress + '%' }"
-            ></div>
-          </div>
-          <div class="progress-details">
-            <span class="time-estimate">{{ module.timeEstimate }}</span>
-            <span class="performance-info">{{ module.performanceInfo }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="technical-explanation">
+      <h3>💻 Fonctionnement Technique</h3>
+      <div class="tech-steps">
+        <div class="tech-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Installation Locale</h4>
+            <p>VictorIA s'installe directement sur votre ordinateur avec tous ses modèles IA intégrés</p>
           </div>
         </div>
         
-        <div class="module-tech">
-          <h4>🔧 Technologies:</h4>
-          <div class="tech-tags">
-            <span v-for="tech in module.technologies" :key="tech" class="tech-tag">
-              {{ tech }}
-            </span>
+        <div class="tech-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Traitement en Temps Réel</h4>
+            <p>Vos requêtes sont traitées instantanément par les modèles locaux sans connexion internet</p>
           </div>
         </div>
         
-        <div class="module-actions">
-          <button class="action-btn primary" :disabled="module.progress === 0">
-            <span class="btn-icon">🔍</span>
-            {{ module.completed ? 'Utiliser' : 'Aperçu' }}
-          </button>
-          <button class="action-btn secondary" :disabled="!module.completed">
-            <span class="btn-icon">📊</span>
-            Performance
-          </button>
+        <div class="tech-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Stockage Sécurisé</h4>
+            <p>Toutes vos données restent chiffrées localement, vous gardez le contrôle total</p>
+          </div>
         </div>
       </div>
     </div>
@@ -128,128 +92,74 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-
-const activeFilter = ref('all')
-
-const filters = [
-  { label: 'Tous les outils', value: 'all' },
-  { label: 'Opérationnels', value: 'completed' },
-  { label: 'En développement', value: 'in-progress' },
-  { label: 'Essentiels', value: 'core' }
-]
-
-// Modules mis à jour avec focus utilitaire
-const modules = [
+// Capacités explicatives de VictorIA
+const capabilities = [
   {
     id: 1,
-    name: 'Assistant Textuel Intelligent',
-    icon: '✍️',
-    progress: 100,
-    completed: true,
-    priority: false,
-    isCore: true,
-    description: 'Aide à la rédaction, correction, reformulation et amélioration de tous vos textes avec une IA locale.',
-    useCases: [
-      'Correction orthographique et grammaticale',
-      'Réécriture et amélioration de style',
-      'Résumé automatique de documents',
-      'Génération de contenu personnalisé'
+    name: 'Assistant Conversationnel',
+    icon: '💬',
+    description: 'Interface de dialogue naturel pour interagir avec tous les modules de VictorIA de manière intuitive.',
+    workingSteps: [
+      'Analyse du langage naturel en temps réel',
+      'Compréhension du contexte de votre demande',
+      'Activation du module approprié',
+      'Génération de réponse personnalisée'
     ],
-    technologies: ['Transformers', 'spaCy', 'NLTK', 'Local LLM'],
-    timeEstimate: 'Opérationnel',
-    performanceInfo: 'Traitement: <50ms'
+    privacyNote: 'Vos conversations ne quittent jamais votre machine'
   },
   {
     id: 2,
-    name: 'Transcription Vocale Locale',
-    icon: '🎤',
-    progress: 85,
-    completed: false,
-    priority: true,
-    isCore: true,
-    description: 'Convertit votre voix en texte instantanément, sans envoyer d\'audio vers internet.',
-    useCases: [
-      'Dictée de documents longs',
-      'Transcription de réunions',
-      'Prise de notes vocales',
-      'Commandes vocales système'
+    name: 'Traitement de Documents',
+    icon: '📄',
+    description: 'Analyse, résumé et extraction d\'informations de vos documents de manière complètement privée.',
+    workingSteps: [
+      'Lecture des formats PDF, Word, TXT',
+      'Analyse du contenu par IA locale',
+      'Extraction des informations clés',
+      'Génération de résumés structurés'
     ],
-    technologies: ['Whisper Local', 'WebRTC', 'PyTorch', 'ONNX'],
-    timeEstimate: '2 semaines',
-    performanceInfo: 'Temps réel: 1x vitesse'
+    privacyNote: 'Vos documents restent sur votre disque dur'
   },
   {
     id: 3,
-    name: 'Analyseur de Documents',
-    icon: '📄',
-    progress: 95,
-    completed: true,
-    priority: false,
-    isCore: true,
-    description: 'Analyse, extrait et résume le contenu de vos documents PDF, Word, Excel localement.',
-    useCases: [
-      'Extraction de données clés',
-      'Résumé de rapports longs',
-      'Analyse de contrats',
-      'Classification automatique'
+    name: 'Assistant Créatif',
+    icon: '🎨',
+    description: 'Aide à la création de contenu, rédaction et brainstorming avec une IA qui apprend vos préférences.',
+    workingSteps: [
+      'Analyse de votre style et préférences',
+      'Génération d\'idées créatives',
+      'Assistance à la rédaction',
+      'Amélioration et optimisation du contenu'
     ],
-    technologies: ['PyPDF2', 'python-docx', 'pandas', 'scikit-learn'],
-    timeEstimate: 'Opérationnel',
-    performanceInfo: 'Documents: <2s'
+    privacyNote: 'Votre style créatif reste confidentiel'
   },
   {
     id: 4,
-    name: 'Assistant Code & Développement',
-    icon: '💻',
-    progress: 75,
-    completed: false,
-    priority: true,
-    isCore: false,
-    description: 'Aide au développement avec suggestions de code, debugging et documentation automatique.',
-    useCases: [
-      'Génération de code personnalisé',
-      'Détection et correction de bugs',
-      'Création de documentation',
-      'Optimisation de performance'
+    name: 'Organisateur Personnel',
+    icon: '📅',
+    description: 'Gestion intelligente de vos tâches et planning avec apprentissage de vos habitudes de travail.',
+    workingSteps: [
+      'Analyse de vos patterns de productivité',
+      'Planification optimale des tâches',
+      'Rappels contextuels intelligents',
+      'Adaptation aux changements de planning'
     ],
-    technologies: ['Code-T5', 'Tree-sitter', 'AST', 'Local CodeLLM'],
-    timeEstimate: '3-4 semaines',
-    performanceInfo: 'Suggestions: <100ms'
+    privacyNote: 'Votre emploi du temps reste privé'
   },
   {
     id: 5,
-    name: 'Organisateur Personnel IA',
-    icon: '📋',
-    progress: 60,
-    completed: false,
-    priority: false,
-    isCore: false,
-    description: 'Gestion intelligente de vos tâches, calendrier et projets avec apprentissage de vos habitudes.',
-    useCases: [
-      'Planification automatique de tâches',
-      'Rappels intelligents contextuels',
-      'Priorisation adaptive',
-      'Analyse de productivité'
+    name: 'Analyse de Données',
+    icon: '📊',
+    description: 'Traitement et analyse de vos données personnelles ou professionnelles en toute confidentialité.',
+    workingSteps: [
+      'Import de vos fichiers de données',
+      'Analyse automatique des patterns',
+      'Génération de visualisations',
+      'Insights et recommandations personnalisées'
     ],
-    technologies: ['scikit-learn', 'pandas', 'SQLite', 'FastAPI'],
-    timeEstimate: '4-5 semaines',
-    performanceInfo: 'Sync: instantanée'
+    privacyNote: 'Vos données sensibles ne sortent pas de chez vous'
   }
 ]
-
-const filteredModules = computed(() => {
-  switch (activeFilter.value) {
-    case 'completed':
-      return modules.filter(m => m.completed)
-    case 'in-progress':
-      return modules.filter(m => !m.completed && m.progress > 0)
-    case 'core':
-      return modules.filter(m => m.isCore)
-    default:
-      return modules
-  }
-})
 </script>
 
 <style scoped>
@@ -259,7 +169,7 @@ const filteredModules = computed(() => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .section-header h2 {
@@ -277,16 +187,18 @@ const filteredModules = computed(() => {
   color: var(--color-text);
   font-size: 1.1rem;
   opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.utility-highlights {
+.working-principles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
 }
 
-.highlight-item {
+.principle-item {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
@@ -297,179 +209,74 @@ const filteredModules = computed(() => {
   transition: all 0.3s ease;
 }
 
-.highlight-item:hover {
+.principle-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(30, 64, 175, 0.1);
-  border-color: var(--color-primary-light);
 }
 
-.highlight-icon {
+.principle-icon {
   font-size: 3rem;
   flex-shrink: 0;
 }
 
-.highlight-content h3 {
+.principle-content h3 {
   color: var(--color-heading);
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
 }
 
-.highlight-content p {
+.principle-content p {
   color: var(--color-text);
   line-height: 1.6;
   opacity: 0.9;
 }
 
-.filter-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-
-.filter-tab {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--color-border);
-  background: var(--color-background);
-  color: var(--color-text);
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-
-.filter-tab:hover {
-  border-color: var(--color-primary);
-  background: var(--color-primary-light);
-}
-
-.filter-tab.active {
-  background: var(--color-primary);
-  color: white;
-  border-color: var(--color-primary);
-}
-
-.modules-grid {
+.capabilities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  margin-bottom: 4rem;
 }
 
-.module-card {
+.capability-card {
   background: var(--color-background-soft);
-  border: 2px solid var(--color-border);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 2rem;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
-.module-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-soft));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.module-card:hover::before {
-  opacity: 1;
-}
-
-.module-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(30, 64, 175, 0.15);
+.capability-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.1);
   border-color: var(--color-primary-light);
 }
 
-.module-card.completed {
-  border-color: #22c55e;
-  background: rgba(34, 197, 94, 0.03);
-}
-
-.module-card.priority {
-  border-color: #f59e0b;
-  background: rgba(245, 158, 11, 0.03);
-}
-
-.module-header {
+.capability-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.module-title-section h3 {
+.capability-icon {
+  font-size: 2.5rem;
+}
+
+.capability-header h3 {
   color: var(--color-heading);
   font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 1rem;
 }
 
-.module-badges {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.status-badge, .priority-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.status-badge.completed {
-  background: #22c55e;
-  color: white;
-}
-
-.status-badge.in-progress {
-  background: var(--color-primary);
-  color: white;
-}
-
-.status-badge.planned {
-  background: var(--color-background-mute);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-}
-
-.core-badge {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.module-icon {
-  font-size: 3rem;
-  opacity: 0.8;
-}
-
-.module-description {
+.capability-description {
   color: var(--color-text);
   margin-bottom: 2rem;
-  line-height: 1.7;
-  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.utility-focus {
+.how-it-works {
   margin-bottom: 2rem;
   padding: 1.5rem;
   background: rgba(59, 130, 246, 0.05);
@@ -477,152 +284,108 @@ const filteredModules = computed(() => {
   border: 1px solid rgba(59, 130, 246, 0.1);
 }
 
-.utility-focus h4 {
+.how-it-works h4 {
   color: var(--color-heading);
   margin-bottom: 1rem;
-  font-size: 1rem;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
-.use-cases {
+.working-steps {
   list-style: none;
   padding: 0;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.use-cases li {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.75rem;
-  color: var(--color-text);
-  padding: 0.5rem 0;
-  font-weight: 500;
 }
 
-.use-case-icon {
+.working-steps li {
+  color: var(--color-text);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.working-steps li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
   color: var(--color-primary);
   font-weight: bold;
-  font-size: 1.1rem;
 }
 
-.module-progress {
-  margin-bottom: 2rem;
-}
-
-.progress-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-}
-
-.progress-percentage {
-  color: var(--color-primary);
-  font-size: 1.1rem;
-}
-
-.progress-bar {
-  background: var(--color-background-mute);
-  height: 8px;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 0.75rem;
-}
-
-.progress-fill {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-soft));
-  height: 100%;
-  border-radius: 4px;
-  transition: width 1s ease;
-}
-
-.progress-details {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  color: var(--color-text);
-  opacity: 0.8;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.performance-info {
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
-.module-tech {
-  margin-bottom: 2rem;
-}
-
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tech-tag {
-  padding: 0.4rem 0.8rem;
-  background: var(--color-primary-light);
-  color: var(--color-primary);
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid rgba(59, 130, 246, 0.2);
-}
-
-.module-actions {
-  display: flex;
-  gap: 1rem;
+.privacy-focus {
+  margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-border);
 }
 
-.action-btn {
-  flex: 1;
+.privacy-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  padding: 0.75rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.privacy-icon {
+  font-size: 1.1rem;
+}
+
+.technical-explanation {
+  background: var(--color-background-soft);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+}
+
+.technical-explanation h3 {
+  color: var(--color-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.tech-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tech-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.step-number {
+  background: var(--color-primary);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.875rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
-.action-btn.primary {
-  background: var(--color-primary);
-  color: white;
+.step-content h4 {
+  color: var(--color-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-.action-btn.primary:hover:not(:disabled) {
-  background: var(--color-primary-soft);
-  transform: translateY(-1px);
-}
-
-.action-btn.secondary {
-  background: transparent;
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-}
-
-.action-btn.secondary:hover:not(:disabled) {
-  background: var(--color-primary-light);
-}
-
-.action-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.btn-icon {
-  font-size: 1rem;
+.step-content p {
+  color: var(--color-text);
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
 @media (max-width: 768px) {
@@ -630,59 +393,30 @@ const filteredModules = computed(() => {
     font-size: 2rem;
   }
   
-  .modules-grid {
+  .capabilities-grid {
     grid-template-columns: 1fr;
   }
   
-  .module-header {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-  
-  .module-icon {
-    align-self: center;
-    font-size: 2.5rem;
-  }
-  
-  .filter-tabs {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-  }
-  
-  .action-btn {
-    font-size: 0.9rem;
-    padding: 0.75rem;
-  }
-  
-  .utility-highlights {
+  .working-principles {
     grid-template-columns: 1fr;
   }
   
-  .highlight-item {
+  .principle-item {
     flex-direction: column;
     text-align: center;
   }
   
-  .highlight-icon {
+  .principle-icon {
     align-self: center;
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .module-actions {
-    flex-direction: column;
   }
   
-  .module-badges {
-    justify-content: flex-start;
+  .technical-explanation {
+    padding: 2rem 1rem;
   }
   
-  .progress-details {
+  .tech-step {
     flex-direction: column;
-    gap: 0.25rem;
+    text-align: center;
   }
 }
 </style>

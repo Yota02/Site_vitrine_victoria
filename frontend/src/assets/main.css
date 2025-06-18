@@ -12,7 +12,7 @@ a,
 .green {
   text-decoration: none;
   color: var(--color-primary);
-  transition: 0.4s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 3px;
 }
 
@@ -35,7 +35,7 @@ a,
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-soft) 100%);
   color: white;
   border: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover {
@@ -48,7 +48,7 @@ a,
   background: transparent;
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-secondary:hover {

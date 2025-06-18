@@ -186,7 +186,7 @@ const availablePlugins = ref([
   border: 2px solid var(--color-border);
   border-radius: 12px;
   overflow: hidden;
-  transition: all 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
