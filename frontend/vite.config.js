@@ -29,8 +29,21 @@ export default defineConfig({
           if (assetInfo.name && assetInfo.name.includes('icone_plugins')) {
             return 'icone_plugins/[name]-[hash][extname]'
           }
+          if (assetInfo.name && assetInfo.name.includes('victoria_icone')) {
+            return '[name]-[hash][extname]'
+          }
           return 'assets/[name]-[hash][extname]'
         }
+      }
+    },
+    // Copier explicitement les assets publics
+    copyPublicDir: true
+  },
+  // Configuration pour servir correctement les assets en production
+  experimental: {
+    renderBuiltUrl(filename, { hostType }) {
+      if (hostType === 'js') {
+        return { js: `window.__dynamic_base__+'${filename}'` }
       }
     }
   }

@@ -94,6 +94,17 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
+// Import des images des plugins
+import musiqueImg from '/icone_plugins/musique.png'
+import chantImg from '/icone_plugins/chant.png'
+import gamingImg from '/icone_plugins/gaming.png'
+import peintureImg from '/icone_plugins/peinture.png'
+import meteoImg from '/icone_plugins/meteo.png'
+import calendrierImg from '/icone_plugins/calendrier.png'
+import convertisseurImg from '/icone_plugins/convertisseur.png'
+import reveImg from '/icone_plugins/reve.png'
+import emotionImg from '/icone_plugins/emotion.png'
+
 const route = useRoute()
 
 const pluginsData = {
@@ -102,7 +113,7 @@ const pluginsData = {
     name: "Plugin Musique",
     description: "Lecture et composition de partitions avec piano virtuel",
     icon: "🎵",
-    image: "/icone_plugins/musique.png",
+    image: musiqueImg,
     category: "Créatif",
     price: "Gratuit",
     version: "2.1.0",
@@ -158,7 +169,7 @@ const pluginsData = {
     name: "Plugin Chant",
     description: "Analyse vocale et assistance pour l'amélioration du chant",
     icon: "🎤",
-    image: "/icone_plugins/chant.png",
+    image: chantImg,
     category: "Créatif",
     price: "19€/mois",
     version: "1.8.3",
@@ -214,7 +225,7 @@ const pluginsData = {
     name: "Plugin Gaming",
     description: "Outils de développement et d'assistance pour les jeux vidéo",
     icon: "🎮",
-    image: "/icone_plugins/gaming.png",
+    image: gamingImg,
     category: "Divertissement",
     price: "29€/mois",
     version: "3.2.1",
@@ -270,7 +281,7 @@ const pluginsData = {
     name: "Plugin Peinture",
     description: "Assistance créative pour la peinture digitale et traditionnelle",
     icon: "🎨",
-    image: "/icone_plugins/peinture.png",
+    image: peintureImg,
     category: "Créatif",
     price: "24€/mois",
     version: "2.5.0",
@@ -326,7 +337,7 @@ const pluginsData = {
     name: "Plugin Météo",
     description: "Prévisions météorologiques avancées et analyses climatiques",
     icon: "🌤️",
-    image: "/icone_plugins/meteo.png",
+    image: meteoImg,
     category: "Utilitaire",
     price: "Gratuit",
     version: "4.1.2",
@@ -382,7 +393,7 @@ const pluginsData = {
     name: "Plugin Calendrier",
     description: "Gestion intelligente du temps et planification automatisée",
     icon: "📅",
-    image: "/icone_plugins/calendrier.png",
+    image: calendrierImg,
     category: "Productivité",
     price: "15€/mois",
     version: "3.0.4",
@@ -438,7 +449,7 @@ const pluginsData = {
     name: "Plugin Convertisseur",
     description: "Conversion universelle d'unités, devises et formats",
     icon: "🔄",
-    image: "/icone_plugins/convertisseur.png",
+    image: convertisseurImg,
     category: "Utilitaire",
     price: "Gratuit",
     version: "2.3.1",
@@ -494,7 +505,7 @@ const pluginsData = {
     name: "Plugin Rêve",
     description: "Analyse et interprétation des rêves avec IA",
     icon: "💭",
-    image: "/icone_plugins/reve.png",
+    image: reveImg,
     category: "Bien-être",
     price: "12€/mois",
     version: "1.6.7",
@@ -550,7 +561,7 @@ const pluginsData = {
     name: "Plugin Émotion",
     description: "Reconnaissance et analyse des émotions en temps réel",
     icon: "😊",
-    image: "/icone_plugins/emotion.png",
+    image: emotionImg,
     category: "Psychologie",
     price: "18€/mois",
     version: "2.9.3",

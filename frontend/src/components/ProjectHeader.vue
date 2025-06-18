@@ -81,6 +81,17 @@
 </template>
 
 <script>
+// Import des images des plugins
+import musiqueImg from '/icone_plugins/musique.png'
+import chantImg from '/icone_plugins/chant.png'
+import gamingImg from '/icone_plugins/gaming.png'
+import peintureImg from '/icone_plugins/peinture.png'
+import meteoImg from '/icone_plugins/meteo.png'
+import calendrierImg from '/icone_plugins/calendrier.png'
+import convertisseurImg from '/icone_plugins/convertisseur.png'
+import reveImg from '/icone_plugins/reve.png'
+import emotionImg from '/icone_plugins/emotion.png'
+
 export default {
   name: 'ProjectHeader',
   data() {
@@ -89,15 +100,15 @@ export default {
       isTransitioning: false,
       rotationTimer: null,
       silhouetteImages: [
-        '/icone_plugins/musique.png',
-        '/icone_plugins/chant.png',
-        '/icone_plugins/convertisseur.png',
-        '/icone_plugins/emotion.png',
-        '/icone_plugins/gaming.png',
-        '/icone_plugins/meteo.png',
-        '/icone_plugins/calendrier.png',
-        '/icone_plugins/peinture.png',
-        '/icone_plugins/reve.png'
+        musiqueImg,
+        chantImg,
+        convertisseurImg,
+        emotionImg,
+        gamingImg,
+        meteoImg,
+        calendrierImg,
+        peintureImg,
+        reveImg
       ]
     }
   },

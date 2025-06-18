@@ -126,8 +126,9 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
+import logoImage from '/victoria_icone.png'
 
-const logoUrl = '/victoria_icone.png'
+const logoUrl = logoImage
 
 const route = useRoute()
 const isMenuOpen = ref(false)
