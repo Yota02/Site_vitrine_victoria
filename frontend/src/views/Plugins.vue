@@ -9,51 +9,33 @@
     
     <div class="content">
       <div class="container">
-        <div class="selection-summary" v-if="selectedPlugins.length > 0">
-          <h3>Plugins sélectionnés ({{ selectedPlugins.length }})</h3>
-          <div class="selected-tags">
-            <span v-for="plugin in selectedPlugins" :key="plugin.id" class="selected-tag">
-              {{ plugin.name }}
-              <button @click="deselectPlugin(plugin.id)" class="remove-btn">×</button>
-            </span>
-          </div>
-          <button @click="confirmSelection" class="confirm-btn">Confirmer la sélection</button>
-        </div>
-
         <div class="plugins-grid">
           <div 
             class="plugin-card" 
             v-for="plugin in availablePlugins" 
             :key="plugin.id"
-            :class="{ 'selected': isSelected(plugin.id) }"
           >
-            <div class="plugin-header">
+            <div class="plugin-banner">
               <div class="plugin-icon">
                 <img :src="plugin.image" :alt="`Icône ${plugin.name}`" />
               </div>
-              <div class="plugin-status">
-                <input 
-                  type="checkbox" 
-                  :checked="isSelected(plugin.id)"
-                  @click.stop
-                  @change="togglePlugin(plugin)"
-                >
+            </div>
+            <div class="plugin-content">
+              <h3 class="plugin-name">{{ plugin.name }}</h3>
+              <p class="plugin-description">{{ plugin.description }}</p>
+              <div class="plugin-features">
+                <span v-for="feature in plugin.features" :key="feature" class="feature-tag">
+                  {{ feature }}
+                </span>
               </div>
-            </div>
-            <h3 class="plugin-name">{{ plugin.name }}</h3>
-            <p class="plugin-description">{{ plugin.description }}</p>
-            <div class="plugin-features">
-              <span v-for="feature in plugin.features" :key="feature" class="feature-tag">
-                {{ feature }}
-              </span>
-            </div>
-            <div class="plugin-footer">
-              <span class="plugin-category">{{ plugin.category }}</span>
-            </div>
-            <div class="plugin-actions">
-              <router-link :to="`/plugin/${plugin.slug}`" class="btn-details">
-                Voir les détails
-              </router-link>
+              <div class="plugin-footer">
+                <span class="plugin-category">{{ plugin.category }}</span>
+              </div>
+              <div class="plugin-actions">
+                <router-link :to="`/plugin/${plugin.slug}`" class="btn-details">
+                  Voir les détails
+                </router-link>
+              </div>
             </div>
           </div>
         </div>
@@ -63,9 +45,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-
-const selectedPluginIds = ref([])
+import { ref } from 'vue'
 
 const availablePlugins = ref([
   {
@@ -159,38 +139,6 @@ const availablePlugins = ref([
     features: ["Détection faciale", "Analyse vocale", "Suivi émotionnel"]
   }
 ])
-
-const selectedPlugins = computed(() => {
-  return availablePlugins.value.filter(plugin => 
-    selectedPluginIds.value.includes(plugin.id)
-  )
-})
-
-const isSelected = (pluginId) => {
-  return selectedPluginIds.value.includes(pluginId)
-}
-
-const togglePlugin = (plugin) => {
-  const index = selectedPluginIds.value.indexOf(plugin.id)
-  if (index > -1) {
-    selectedPluginIds.value.splice(index, 1)
-  } else {
-    selectedPluginIds.value.push(plugin.id)
-  }
-}
-
-const deselectPlugin = (pluginId) => {
-  const index = selectedPluginIds.value.indexOf(pluginId)
-  if (index > -1) {
-    selectedPluginIds.value.splice(index, 1)
-  }
-}
-
-const confirmSelection = () => {
-  if (selectedPlugins.value.length > 0) {
-    alert(`Vous avez sélectionné ${selectedPlugins.value.length} plugin(s) :\n${selectedPlugins.value.map(p => p.name).join('\n')}`)
-  }
-}
 </script>
 
 <style scoped>
@@ -227,62 +175,6 @@ const confirmSelection = () => {
   margin: 0 auto;
 }
 
-.selection-summary {
-  background: var(--color-background-soft);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 2rem;
-  margin-bottom: 3rem;
-}
-
-.selection-summary h3 {
-  color: var(--color-heading);
-  margin-bottom: 1rem;
-}
-
-.selected-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.selected-tag {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--color-primary);
-  color: white;
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
-
-.remove-btn {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.confirm-btn {
-  padding: 0.75rem 1.5rem;
-  background: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.confirm-btn:hover {
-  background: var(--color-primary-soft);
-  transform: translateY(-1px);
-}
-
 .plugins-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -293,8 +185,7 @@ const confirmSelection = () => {
   background: var(--color-background-soft);
   border: 2px solid var(--color-border);
   border-radius: 12px;
-  padding: 2rem;
-  cursor: pointer;
+  overflow: hidden;
   transition: all 0.2s ease;
   position: relative;
 }
@@ -304,39 +195,44 @@ const confirmSelection = () => {
   box-shadow: 0 8px 24px rgba(30, 64, 175, 0.1);
 }
 
-.plugin-card.selected {
-  border-color: var(--color-primary);
-  background: var(--color-primary-light);
-}
-
-.plugin-header {
+.plugin-banner {
+  background: var(--color-background-mute);
+  padding: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  min-height: 120px;
+  overflow: hidden;
+  position: relative;
 }
 
 .plugin-icon {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  border-radius: 12px;
-  background: var(--color-background-mute);
-  padding: 0.5rem;
+  border-radius: 0;
+  background: none;
+  backdrop-filter: none;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .plugin-icon img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  border-radius: 8px;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 0;
+  filter: none;
 }
 
-.plugin-status input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+.plugin-content {
+  padding: 2rem;
 }
 
 .plugin-name {
@@ -408,25 +304,6 @@ const confirmSelection = () => {
   transform: translateY(-1px);
 }
 
-.plugin-image {
-  margin-top: 1rem;
-  text-align: center;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.plugin-image img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.plugin-card:hover .plugin-image img {
-  transform: scale(1.05);
-}
-
 @media (max-width: 768px) {
   .hero-section h1 {
     font-size: 2rem;
@@ -444,13 +321,16 @@ const confirmSelection = () => {
     grid-template-columns: 1fr;
   }
   
-  .selected-tags {
-    flex-direction: column;
+  .plugin-banner {
+    min-height: 100px;
   }
   
   .plugin-icon {
-    width: 60px;
-    height: 60px;
+    padding: 0;
+  }
+  
+  .plugin-content {
+    padding: 1.5rem;
   }
 }
 </style>

@@ -3,6 +3,7 @@
     <ProjectHeader />
     <main class="main-content">
       <ProgressOverview />
+      <LocalAdvantages />
       <ModulesList />
     </main>
   </div>
@@ -12,11 +13,12 @@
 import ProjectHeader from '../components/ProjectHeader.vue'
 import ProgressOverview from '../components/ProgressOverview.vue'
 import ModulesList from '../components/ModulesList.vue'
+import LocalAdvantages from '../components/LocalAdvantages.vue'
 </script>
 
 <style scoped>
 .home {
-  padding-top: 60px; /* Compensation pour la navbar fixe */
+  padding-top: 20px; /* Réduction de l'espace avec la navbar */
 }
 
 .main-content {

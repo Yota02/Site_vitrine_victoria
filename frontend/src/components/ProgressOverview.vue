@@ -1,98 +1,120 @@
 <template>
   <section class="progress-overview">
     <div class="section-header">
-      <h2>Tableau de Bord du Projet</h2>
-      <p class="section-subtitle">Suivi en temps réel de l'avancement de VictorIA</p>
+      <h2>Performance & Capacités</h2>
+      <p class="section-subtitle">Surveillance en temps réel de votre IA locale VictorIA</p>
     </div>
     
     <div class="progress-stats">
       <div class="stat-card featured">
-        <div class="card-icon">📊</div>
+        <div class="card-icon">🎯</div>
         <div class="stat-number">{{ overallProgress }}%</div>
-        <div class="stat-label">Progression Globale</div>
+        <div class="stat-label">Fonctionnalités Actives</div>
         <div class="progress-bar">
           <div class="progress-fill" :style="{ width: overallProgress + '%' }"></div>
         </div>
         <div class="trend-indicator positive">
           <span class="trend-arrow">↗</span>
-          <span>+5% cette semaine</span>
+          <span>+12% ce mois-ci</span>
         </div>
       </div>
       
       <div class="stat-card">
-        <div class="card-icon">✅</div>
-        <div class="stat-number">{{ completedModules }}</div>
-        <div class="stat-label">Modules Terminés</div>
-        <div class="stat-detail">sur {{ totalModules }} modules</div>
-      </div>
-      
-      <div class="stat-card">
         <div class="card-icon">⚡</div>
-        <div class="stat-number">{{ activeModules }}</div>
-        <div class="stat-label">Modules Actifs</div>
-        <div class="stat-detail">en développement</div>
+        <div class="stat-number">{{ responseTime }}ms</div>
+        <div class="stat-label">Temps de Réponse</div>
+        <div class="stat-detail">moyenne locale</div>
       </div>
       
       <div class="stat-card">
-        <div class="card-icon">🎯</div>
-        <div class="stat-number">{{ upcomingModules }}</div>
-        <div class="stat-label">Modules Prévus</div>
-        <div class="stat-detail">prochainement</div>
+        <div class="card-icon">🛠️</div>
+        <div class="stat-number">{{ activePlugins }}</div>
+        <div class="stat-label">Plugins Actifs</div>
+        <div class="stat-detail">sur {{ totalPlugins }} disponibles</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="card-icon">💾</div>
+        <div class="stat-number">{{ memoryUsage }}MB</div>
+        <div class="stat-label">Mémoire Utilisée</div>
+        <div class="stat-detail">optimisé pour local</div>
       </div>
     </div>
     
     <div class="additional-stats">
       <div class="mini-stat">
-        <div class="mini-stat-icon">🔥</div>
+        <div class="mini-stat-icon">🔒</div>
         <div class="mini-stat-content">
-          <div class="mini-stat-number">15</div>
-          <div class="mini-stat-label">Jours d'activité</div>
+          <div class="mini-stat-number">100%</div>
+          <div class="mini-stat-label">Confidentialité</div>
         </div>
       </div>
       
       <div class="mini-stat">
-        <div class="mini-stat-icon">💡</div>
+        <div class="mini-stat-icon">🏠</div>
         <div class="mini-stat-content">
-          <div class="mini-stat-number">47</div>
-          <div class="mini-stat-label">Fonctionnalités</div>
+          <div class="mini-stat-number">0</div>
+          <div class="mini-stat-label">Connexions externes</div>
         </div>
       </div>
       
       <div class="mini-stat">
-        <div class="mini-stat-icon">🚀</div>
+        <div class="mini-stat-icon">⚡</div>
         <div class="mini-stat-content">
-          <div class="mini-stat-number">99.9%</div>
-          <div class="mini-stat-label">Disponibilité</div>
+          <div class="mini-stat-number">{{ processingSpeed }}</div>
+          <div class="mini-stat-label">Requêtes/sec</div>
         </div>
       </div>
       
       <div class="mini-stat">
-        <div class="mini-stat-icon">⭐</div>
+        <div class="mini-stat-icon">🎯</div>
         <div class="mini-stat-content">
-          <div class="mini-stat-number">4.9</div>
-          <div class="mini-stat-label">Note moyenne</div>
+          <div class="mini-stat-number">{{ accuracy }}%</div>
+          <div class="mini-stat-label">Précision globale</div>
         </div>
+      </div>
+    </div>
+    
+    <div class="performance-indicators">
+      <div class="indicator-card">
+        <div class="indicator-header">
+          <h3>🔋 Efficacité Énergétique</h3>
+          <span class="indicator-status excellent">Excellente</span>
+        </div>
+        <p>VictorIA est optimisé pour fonctionner efficacement sur votre machine locale sans surcharger votre système.</p>
+      </div>
+      
+      <div class="indicator-card">
+        <div class="indicator-header">
+          <h3>🛡️ Sécurité & Confidentialité</h3>
+          <span class="indicator-status excellent">Maximale</span>
+        </div>
+        <p>Aucune donnée transmise vers l'extérieur. Tout le traitement s'effectue localement sur votre ordinateur.</p>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
-// Données simulées - à remplacer par vos vraies données
+// Données simulées pour l'IA locale
 const modules = [
-  { name: 'Traitement du Langage Naturel', progress: 85, completed: false },
-  { name: 'Reconnaissance Vocale', progress: 70, completed: false },
+  { name: 'Traitement du Langage Naturel', progress: 95, completed: true },
+  { name: 'Reconnaissance Vocale', progress: 85, completed: false },
   { name: 'Génération de Réponses', progress: 100, completed: true },
-  { name: 'Apprentissage Contextuel', progress: 45, completed: false },
+  { name: 'Apprentissage Contextuel', progress: 75, completed: false },
   { name: 'Interface Utilisateur', progress: 90, completed: false }
 ]
 
-const totalModules = computed(() => modules.length)
-const completedModules = computed(() => modules.filter(m => m.completed).length)
-const activeModules = computed(() => modules.filter(m => !m.completed && m.progress > 0).length)
-const upcomingModules = computed(() => modules.filter(m => m.progress === 0).length)
+// Métriques de performance
+const responseTime = ref(45)
+const memoryUsage = ref(245)
+const processingSpeed = ref(127)
+const accuracy = ref(94)
+const totalPlugins = ref(9)
+const activePlugins = ref(7)
+
 const overallProgress = computed(() => {
   const total = modules.reduce((sum, module) => sum + module.progress, 0)
   return Math.round(total / modules.length)
@@ -283,6 +305,61 @@ const overallProgress = computed(() => {
   opacity: 0.8;
 }
 
+.performance-indicators {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.indicator-card {
+  background: var(--color-background-soft);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.indicator-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.1);
+}
+
+.indicator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.indicator-header h3 {
+  color: var(--color-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.indicator-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.indicator-status.excellent {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.indicator-card p {
+  color: var(--color-text);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
 @media (max-width: 768px) {
   .section-header h2 {
     font-size: 2rem;
@@ -302,6 +379,16 @@ const overallProgress = computed(() => {
   
   .stat-number {
     font-size: 2.5rem;
+  }
+  
+  .performance-indicators {
+    grid-template-columns: 1fr;
+  }
+  
+  .indicator-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }
 

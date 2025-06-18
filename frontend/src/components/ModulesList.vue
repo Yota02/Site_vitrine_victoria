@@ -1,8 +1,34 @@
 <template>
   <section class="modules-list">
     <div class="section-header">
-      <h2>Modules de Développement</h2>
-      <p class="section-subtitle">Architecture modulaire pour une IA conversationnelle complète</p>
+      <h2>Plugins & Capacités Utilitaires</h2>
+      <p class="section-subtitle">Des outils IA spécialisés qui fonctionnent 100% en local pour préserver votre confidentialité</p>
+    </div>
+    
+    <div class="utility-highlights">
+      <div class="highlight-item">
+        <div class="highlight-icon">🔒</div>
+        <div class="highlight-content">
+          <h3>Confidentialité Absolue</h3>
+          <p>Tous les traitements s'effectuent sur votre machine. Vos données personnelles ne quittent jamais votre ordinateur.</p>
+        </div>
+      </div>
+      
+      <div class="highlight-item">
+        <div class="highlight-icon">⚡</div>
+        <div class="highlight-content">
+          <h3>Performance Optimale</h3>
+          <p>Aucune latence réseau, traitement instantané adapté à votre matériel pour une expérience fluide.</p>
+        </div>
+      </div>
+      
+      <div class="highlight-item">
+        <div class="highlight-icon">🛠️</div>
+        <div class="highlight-content">
+          <h3>Outils Spécialisés</h3>
+          <p>Chaque plugin est conçu pour une tâche spécifique : productivité, créativité, analyse, communication.</p>
+        </div>
+      </div>
     </div>
     
     <div class="filter-tabs">
@@ -29,19 +55,19 @@
             <div class="module-badges">
               <span v-if="module.completed" class="status-badge completed">
                 <span class="badge-icon">✓</span>
-                Terminé
+                Opérationnel
               </span>
               <span v-else-if="module.progress > 0" class="status-badge in-progress">
                 <span class="badge-icon">⚡</span>
-                En cours
+                En développement
               </span>
               <span v-else class="status-badge planned">
                 <span class="badge-icon">📋</span>
                 Planifié
               </span>
-              <span v-if="module.priority" class="priority-badge">
-                <span class="badge-icon">🔥</span>
-                Priorité
+              <span v-if="module.isCore" class="core-badge">
+                <span class="badge-icon">⭐</span>
+                Essentiel
               </span>
             </div>
           </div>
@@ -50,9 +76,19 @@
         
         <p class="module-description">{{ module.description }}</p>
         
+        <div class="utility-focus">
+          <h4>💡 Cas d'usage pratiques:</h4>
+          <ul class="use-cases">
+            <li v-for="useCase in module.useCases" :key="useCase">
+              <span class="use-case-icon">→</span>
+              {{ useCase }}
+            </li>
+          </ul>
+        </div>
+        
         <div class="module-progress">
           <div class="progress-header">
-            <span>Progression</span>
+            <span>État de développement</span>
             <span class="progress-percentage">{{ module.progress }}%</span>
           </div>
           <div class="progress-bar">
@@ -63,22 +99,12 @@
           </div>
           <div class="progress-details">
             <span class="time-estimate">{{ module.timeEstimate }}</span>
-            <span class="last-update">{{ module.lastUpdate }}</span>
+            <span class="performance-info">{{ module.performanceInfo }}</span>
           </div>
         </div>
         
-        <div class="module-features">
-          <h4>Fonctionnalités clés:</h4>
-          <ul>
-            <li v-for="feature in module.features" :key="feature" class="feature-item">
-              <span class="feature-icon">→</span>
-              {{ feature }}
-            </li>
-          </ul>
-        </div>
-        
         <div class="module-tech">
-          <h4>Technologies:</h4>
+          <h4>🔧 Technologies:</h4>
           <div class="tech-tags">
             <span v-for="tech in module.technologies" :key="tech" class="tech-tag">
               {{ tech }}
@@ -88,12 +114,12 @@
         
         <div class="module-actions">
           <button class="action-btn primary" :disabled="module.progress === 0">
-            <span class="btn-icon">👁️</span>
-            Voir Détails
+            <span class="btn-icon">🔍</span>
+            {{ module.completed ? 'Utiliser' : 'Aperçu' }}
           </button>
-          <button class="action-btn secondary" :disabled="module.completed">
+          <button class="action-btn secondary" :disabled="!module.completed">
             <span class="btn-icon">📊</span>
-            Statistiques
+            Performance
           </button>
         </div>
       </div>
@@ -107,78 +133,108 @@ import { ref, computed } from 'vue'
 const activeFilter = ref('all')
 
 const filters = [
-  { label: 'Tous', value: 'all' },
-  { label: 'Terminés', value: 'completed' },
-  { label: 'En cours', value: 'in-progress' },
-  { label: 'Planifiés', value: 'planned' }
+  { label: 'Tous les outils', value: 'all' },
+  { label: 'Opérationnels', value: 'completed' },
+  { label: 'En développement', value: 'in-progress' },
+  { label: 'Essentiels', value: 'core' }
 ]
 
-// Données des modules enrichies
+// Modules mis à jour avec focus utilitaire
 const modules = [
   {
     id: 1,
-    name: 'Traitement du Langage Naturel',
-    icon: '🧠',
-    progress: 85,
-    completed: false,
-    priority: true,
-    description: 'Analyse et compréhension du langage humain pour une communication naturelle et contextuelle.',
-    features: ['Analyse syntaxique avancée', 'Reconnaissance d\'entités nommées', 'Analyse de sentiment multi-niveau', 'Tokenisation intelligente'],
-    technologies: ['Python', 'spaCy', 'Transformers', 'BERT'],
-    timeEstimate: '2-3 semaines restantes',
-    lastUpdate: 'Il y a 2 jours'
-  },
-  {
-    id: 2,
-    name: 'Reconnaissance Vocale',
-    icon: '🎤',
-    progress: 70,
-    completed: false,
-    priority: false,
-    description: 'Conversion de la parole en texte avec haute précision et adaptation multi-locuteurs.',
-    features: ['Reconnaissance multi-langues', 'Suppression de bruit adaptatif', 'Adaptation au locuteur', 'Traitement temps réel'],
-    technologies: ['TensorFlow', 'WebRTC', 'Whisper', 'PyTorch'],
-    timeEstimate: '3-4 semaines restantes',
-    lastUpdate: 'Il y a 1 jour'
-  },
-  {
-    id: 3,
-    name: 'Génération de Réponses',
-    icon: '💬',
+    name: 'Assistant Textuel Intelligent',
+    icon: '✍️',
     progress: 100,
     completed: true,
     priority: false,
-    description: 'Système de génération de réponses contextuelles et pertinentes avec personnalité adaptative.',
-    features: ['Réponses contextuelles', 'Ton adaptatif', 'Cohérence conversationnelle', 'Personnalisation utilisateur'],
-    technologies: ['GPT-4', 'LangChain', 'FastAPI', 'Redis'],
-    timeEstimate: 'Terminé',
-    lastUpdate: 'Il y a 1 semaine'
+    isCore: true,
+    description: 'Aide à la rédaction, correction, reformulation et amélioration de tous vos textes avec une IA locale.',
+    useCases: [
+      'Correction orthographique et grammaticale',
+      'Réécriture et amélioration de style',
+      'Résumé automatique de documents',
+      'Génération de contenu personnalisé'
+    ],
+    technologies: ['Transformers', 'spaCy', 'NLTK', 'Local LLM'],
+    timeEstimate: 'Opérationnel',
+    performanceInfo: 'Traitement: <50ms'
+  },
+  {
+    id: 2,
+    name: 'Transcription Vocale Locale',
+    icon: '🎤',
+    progress: 85,
+    completed: false,
+    priority: true,
+    isCore: true,
+    description: 'Convertit votre voix en texte instantanément, sans envoyer d\'audio vers internet.',
+    useCases: [
+      'Dictée de documents longs',
+      'Transcription de réunions',
+      'Prise de notes vocales',
+      'Commandes vocales système'
+    ],
+    technologies: ['Whisper Local', 'WebRTC', 'PyTorch', 'ONNX'],
+    timeEstimate: '2 semaines',
+    performanceInfo: 'Temps réel: 1x vitesse'
+  },
+  {
+    id: 3,
+    name: 'Analyseur de Documents',
+    icon: '📄',
+    progress: 95,
+    completed: true,
+    priority: false,
+    isCore: true,
+    description: 'Analyse, extrait et résume le contenu de vos documents PDF, Word, Excel localement.',
+    useCases: [
+      'Extraction de données clés',
+      'Résumé de rapports longs',
+      'Analyse de contrats',
+      'Classification automatique'
+    ],
+    technologies: ['PyPDF2', 'python-docx', 'pandas', 'scikit-learn'],
+    timeEstimate: 'Opérationnel',
+    performanceInfo: 'Documents: <2s'
   },
   {
     id: 4,
-    name: 'Apprentissage Contextuel',
-    icon: '🎯',
-    progress: 45,
+    name: 'Assistant Code & Développement',
+    icon: '💻',
+    progress: 75,
     completed: false,
     priority: true,
-    description: 'Amélioration continue basée sur les interactions utilisateur et l\'historique conversationnel.',
-    features: ['Mémoire conversationnelle', 'Adaptation comportementale', 'Apprentissage incrémental', 'Préférences utilisateur'],
-    technologies: ['MLflow', 'MongoDB', 'Kafka', 'scikit-learn'],
-    timeEstimate: '5-6 semaines restantes',
-    lastUpdate: 'Il y a 3 jours'
+    isCore: false,
+    description: 'Aide au développement avec suggestions de code, debugging et documentation automatique.',
+    useCases: [
+      'Génération de code personnalisé',
+      'Détection et correction de bugs',
+      'Création de documentation',
+      'Optimisation de performance'
+    ],
+    technologies: ['Code-T5', 'Tree-sitter', 'AST', 'Local CodeLLM'],
+    timeEstimate: '3-4 semaines',
+    performanceInfo: 'Suggestions: <100ms'
   },
   {
     id: 5,
-    name: 'Interface Utilisateur',
-    icon: '🖥️',
-    progress: 90,
+    name: 'Organisateur Personnel IA',
+    icon: '📋',
+    progress: 60,
     completed: false,
     priority: false,
-    description: 'Interface intuitive et responsive pour une expérience utilisateur optimale sur tous les appareils.',
-    features: ['Design responsive', 'Chat en temps réel', 'Notifications push', 'Personnalisation UI'],
-    technologies: ['Vue.js', 'Socket.io', 'Tailwind', 'PWA'],
-    timeEstimate: '1 semaine restante',
-    lastUpdate: 'Il y a 6 heures'
+    isCore: false,
+    description: 'Gestion intelligente de vos tâches, calendrier et projets avec apprentissage de vos habitudes.',
+    useCases: [
+      'Planification automatique de tâches',
+      'Rappels intelligents contextuels',
+      'Priorisation adaptive',
+      'Analyse de productivité'
+    ],
+    technologies: ['scikit-learn', 'pandas', 'SQLite', 'FastAPI'],
+    timeEstimate: '4-5 semaines',
+    performanceInfo: 'Sync: instantanée'
   }
 ]
 
@@ -188,8 +244,8 @@ const filteredModules = computed(() => {
       return modules.filter(m => m.completed)
     case 'in-progress':
       return modules.filter(m => !m.completed && m.progress > 0)
-    case 'planned':
-      return modules.filter(m => m.progress === 0)
+    case 'core':
+      return modules.filter(m => m.isCore)
     default:
       return modules
   }
@@ -221,6 +277,48 @@ const filteredModules = computed(() => {
   color: var(--color-text);
   font-size: 1.1rem;
   opacity: 0.8;
+}
+
+.utility-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: var(--color-background-soft);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.1);
+  border-color: var(--color-primary-light);
+}
+
+.highlight-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.highlight-content h3 {
+  color: var(--color-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.highlight-content p {
+  color: var(--color-text);
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
 .filter-tabs {
@@ -347,13 +445,16 @@ const filteredModules = computed(() => {
   border: 1px solid var(--color-border);
 }
 
-.priority-badge {
-  background: #f59e0b;
+.core-badge {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
   color: white;
-}
-
-.badge-icon {
-  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .module-icon {
@@ -366,6 +467,46 @@ const filteredModules = computed(() => {
   margin-bottom: 2rem;
   line-height: 1.7;
   font-size: 1rem;
+}
+
+.utility-focus {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.utility-focus h4 {
+  color: var(--color-heading);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.use-cases {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.use-cases li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text);
+  padding: 0.5rem 0;
+  font-weight: 500;
+}
+
+.use-case-icon {
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .module-progress {
@@ -405,38 +546,13 @@ const filteredModules = computed(() => {
   font-size: 0.85rem;
   color: var(--color-text);
   opacity: 0.8;
-}
-
-.module-features {
-  margin-bottom: 2rem;
-}
-
-.module-features h4, .module-tech h4 {
-  color: var(--color-heading);
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.module-features ul {
-  list-style: none;
-  padding: 0;
-  display: grid;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--color-text);
-  padding: 0.5rem 0;
-}
-
-.feature-icon {
+.performance-info {
   color: var(--color-primary);
-  font-weight: bold;
-  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .module-tech {
@@ -538,6 +654,20 @@ const filteredModules = computed(() => {
   .action-btn {
     font-size: 0.9rem;
     padding: 0.75rem;
+  }
+  
+  .utility-highlights {
+    grid-template-columns: 1fr;
+  }
+  
+  .highlight-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .highlight-icon {
+    align-self: center;
+    font-size: 2.5rem;
   }
 }
 
