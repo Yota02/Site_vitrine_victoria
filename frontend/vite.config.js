@@ -20,5 +20,12 @@ export default defineConfig({
   // Configuration pour GitHub Pages
   base: process.env.NODE_ENV === 'production' ? '/Site_vitrine_victoria/' : '/',
   // Configuration des assets
-  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.ico']
+  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.ico'],
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]'
+      }
+    }
+  }
 })

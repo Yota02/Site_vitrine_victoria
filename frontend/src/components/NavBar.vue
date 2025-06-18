@@ -4,7 +4,7 @@
       <!-- Logo et titre -->
       <router-link to="/" class="navbar-brand" @click="closeMenu">
         <span class="brand-text">
-          <img src="/victoria_icone.png" alt="VictorIA Logo" class="brand-icon" />
+          <img :src="logoUrl" alt="VictorIA Logo" class="brand-icon" />
           <span class="brand-name">VictorIA</span>
         </span>
       </router-link>
@@ -126,6 +126,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
+import logoUrl from '@/assets/victoria_icone.png'
 
 const route = useRoute()
 const isMenuOpen = ref(false)
