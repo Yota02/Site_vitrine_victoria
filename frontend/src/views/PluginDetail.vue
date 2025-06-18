@@ -120,6 +120,7 @@ const pluginsData = {
     lastUpdate: "15 Décembre 2024",
     developer: "VictorIA Team",
     support: "24/7",
+    status: "completed",
     overview: "Notre plugin Musique utilise l'intelligence artificielle pour révolutionner la création musicale. Que vous soyez compositeur débutant ou expert, cet outil vous accompagne dans toutes les étapes de la création musicale, de la génération d'idées à l'arrangement final.",
     detailedFeatures: [
       {
@@ -176,6 +177,7 @@ const pluginsData = {
     lastUpdate: "10 Décembre 2024",
     developer: "VictorIA Team",
     support: "Lun-Ven 9h-18h",
+    status: "completed",
     overview: "Le plugin Chant est votre coach vocal personnel alimenté par l'IA. Il analyse votre voix en temps réel, identifie les points d'amélioration et propose des exercices personnalisés pour développer votre technique vocale.",
     detailedFeatures: [
       {
@@ -232,6 +234,8 @@ const pluginsData = {
     lastUpdate: "20 Décembre 2024",
     developer: "VictorIA Team",
     support: "24/7",
+    status: "development",
+    progress: 75,
     overview: "Le plugin Gaming révolutionne le développement de jeux vidéo en intégrant l'IA à chaque étape. De la génération procédurale de contenu à l'analyse comportementale des joueurs, cet outil complet accompagne les développeurs et les joueurs.",
     detailedFeatures: [
       {
@@ -288,6 +292,8 @@ const pluginsData = {
     lastUpdate: "18 Décembre 2024",
     developer: "VictorIA Team",
     support: "Lun-Sam 8h-20h",
+    status: "development",
+    progress: 60,
     overview: "Le plugin Peinture est votre mentor artistique numérique. Il analyse votre style, propose des améliorations et vous guide dans l'exploration de nouvelles techniques picturales, que vous peigniez sur toile ou sur écran.",
     detailedFeatures: [
       {
@@ -344,6 +350,7 @@ const pluginsData = {
     lastUpdate: "22 Décembre 2024",
     developer: "VictorIA Team",
     support: "Communauté",
+    status: "completed",
     overview: "Le plugin Météo utilise l'intelligence artificielle pour fournir des prévisions météorologiques ultra-précises. En analysant des milliers de données climatiques, il prédit les conditions météo avec une précision inégalée.",
     detailedFeatures: [
       {
@@ -400,6 +407,8 @@ const pluginsData = {
     lastUpdate: "16 Décembre 2024",
     developer: "VictorIA Team",
     support: "24/7",
+    status: "development",
+    progress: 45,
     overview: "Le plugin Calendrier révolutionne la gestion du temps en utilisant l'IA pour optimiser automatiquement votre planning. Il apprend de vos habitudes et propose des créneaux optimaux pour vos activités.",
     detailedFeatures: [
       {
@@ -456,6 +465,7 @@ const pluginsData = {
     lastUpdate: "14 Décembre 2024",
     developer: "VictorIA Team",
     support: "Communauté",
+    status: "completed",
     overview: "Le plugin Convertisseur est votre outil universel de conversion. Alimenté par l'IA, il reconnaît automatiquement les unités et formats, propose des conversions contextuelles et maintient une précision maximale.",
     detailedFeatures: [
       {
@@ -512,6 +522,8 @@ const pluginsData = {
     lastUpdate: "12 Décembre 2024",
     developer: "VictorIA Team",
     support: "Lun-Ven 10h-16h",
+    status: "development",
+    progress: 30,
     overview: "Le plugin Rêve explore l'univers mystérieux de vos songes. Utilisant l'IA et la psychologie moderne, il analyse vos rêves, identifie les patterns récurrents et propose des interprétations personnalisées.",
     detailedFeatures: [
       {
@@ -568,6 +580,8 @@ const pluginsData = {
     lastUpdate: "19 Décembre 2024",
     developer: "VictorIA Team",
     support: "24/7",
+    status: "development",
+    progress: 85,
     overview: "Le plugin Émotion est votre compagnon émotionnel intelligent. Il analyse vos expressions, votre voix et vos textes pour comprendre votre état émotionnel et vous propose des stratégies d'amélioration de votre bien-être.",
     detailedFeatures: [
       {

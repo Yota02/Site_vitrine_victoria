@@ -2,27 +2,72 @@
   <div class="plugins">
     <div class="hero-section">
       <div class="container">
-        <h1>Plugins de Développement</h1>
+        <h1>Plugins en Développement</h1>
         <p class="hero-subtitle">Découvrez nos plugins spécialisés pour différents domaines créatifs et utilitaires</p>
       </div>
     </div>
     
     <div class="content">
       <div class="container">
+        <!-- Filtres par statut -->
+        <div class="filters-section">
+          <h3>Filtrer par statut :</h3>
+          <div class="status-filters">
+            <button 
+              class="filter-btn" 
+              :class="{ active: statusFilter === 'all' }"
+              @click="statusFilter = 'all'"
+            >
+              Tous ({{ availablePlugins.length }})
+            </button>
+            <button 
+              class="filter-btn" 
+              :class="{ active: statusFilter === 'completed' }"
+              @click="statusFilter = 'completed'"
+            >
+              Terminés ({{ completedPlugins.length }})
+            </button>
+            <button 
+              class="filter-btn" 
+              :class="{ active: statusFilter === 'development' }"
+              @click="statusFilter = 'development'"
+            >
+              En développement ({{ developmentPlugins.length }})
+            </button>
+          </div>
+        </div>
+
         <div class="plugins-grid">
           <div 
             class="plugin-card" 
-            v-for="plugin in availablePlugins" 
+            v-for="plugin in filteredPlugins" 
             :key="plugin.id"
           >
             <div class="plugin-banner">
               <div class="plugin-icon">
                 <img :src="plugin.image" :alt="`Icône ${plugin.name}`" />
               </div>
+              <!-- Badge de statut -->
+              <div class="status-badge" :class="plugin.status">
+                <span class="status-icon">{{ plugin.status === 'completed' ? '✅' : '🚧' }}</span>
+                <span class="status-text">{{ plugin.status === 'completed' ? 'Terminé' : 'En développement' }}</span>
+              </div>
             </div>
             <div class="plugin-content">
               <h3 class="plugin-name">{{ plugin.name }}</h3>
               <p class="plugin-description">{{ plugin.description }}</p>
+              
+              <!-- Barre de progression pour les plugins en développement -->
+              <div v-if="plugin.status === 'development'" class="progress-section">
+                <div class="progress-label">
+                  <span>Progression</span>
+                  <span class="progress-percentage">{{ plugin.progress }}%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" :style="{ width: plugin.progress + '%' }"></div>
+                </div>
+              </div>
+              
               <div class="plugin-features">
                 <span v-for="feature in plugin.features" :key="feature" class="feature-tag">
                   {{ feature }}
@@ -45,7 +90,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 // Import des images des plugins
 import musiqueImg from '/icone_plugins/musique.png'
@@ -58,6 +103,8 @@ import convertisseurImg from '/icone_plugins/convertisseur.png'
 import reveImg from '/icone_plugins/reve.png'
 import emotionImg from '/icone_plugins/emotion.png'
 
+const statusFilter = ref('all')
+
 const availablePlugins = ref([
   {
     id: 1,
@@ -67,7 +114,8 @@ const availablePlugins = ref([
     icon: "🎵",
     image: musiqueImg,
     category: "Créatif",
-    features: ["Composition automatique", "Analyse harmonique", "Génération de mélodies"]
+    features: ["Composition automatique", "Analyse harmonique", "Génération de mélodies"],
+    status: "completed"
   },
   {
     id: 2,
@@ -77,7 +125,8 @@ const availablePlugins = ref([
     icon: "🎤",
     image: chantImg,
     category: "Créatif",
-    features: ["Analyse de la voix", "Correction de pitch", "Exercices vocaux"]
+    features: ["Analyse de la voix", "Correction de pitch", "Exercices vocaux"],
+    status: "completed"
   },
   {
     id: 3,
@@ -87,7 +136,9 @@ const availablePlugins = ref([
     icon: "🎮",
     image: gamingImg,
     category: "Divertissement",
-    features: ["IA de jeu", "Génération de niveaux", "Analytics de gameplay"]
+    features: ["IA de jeu", "Génération de niveaux", "Analytics de gameplay"],
+    status: "development",
+    progress: 75
   },
   {
     id: 4,
@@ -97,7 +148,9 @@ const availablePlugins = ref([
     icon: "🎨",
     image: peintureImg,
     category: "Créatif",
-    features: ["Palette de couleurs", "Styles artistiques", "Critiques constructives"]
+    features: ["Palette de couleurs", "Styles artistiques", "Critiques constructives"],
+    status: "development",
+    progress: 60
   },
   {
     id: 5,
@@ -107,7 +160,8 @@ const availablePlugins = ref([
     icon: "🌤️",
     image: meteoImg,
     category: "Utilitaire",
-    features: ["Prévisions précises", "Alertes météo", "Analyse climatique"]
+    features: ["Prévisions précises", "Alertes météo", "Analyse climatique"],
+    status: "completed"
   },
   {
     id: 6,
@@ -117,7 +171,9 @@ const availablePlugins = ref([
     icon: "📅",
     image: calendrierImg,
     category: "Productivité",
-    features: ["Planification IA", "Rappels intelligents", "Optimisation d'agenda"]
+    features: ["Planification IA", "Rappels intelligents", "Optimisation d'agenda"],
+    status: "development",
+    progress: 45
   },
   {
     id: 7,
@@ -127,7 +183,8 @@ const availablePlugins = ref([
     icon: "🔄",
     image: convertisseurImg,
     category: "Utilitaire",
-    features: ["Multi-devises", "Unités physiques", "Formats de fichiers"]
+    features: ["Multi-devises", "Unités physiques", "Formats de fichiers"],
+    status: "completed"
   },
   {
     id: 8,
@@ -137,7 +194,9 @@ const availablePlugins = ref([
     icon: "💭",
     image: reveImg,
     category: "Bien-être",
-    features: ["Interprétation symbolique", "Journal de rêves", "Analyse psychologique"]
+    features: ["Interprétation symbolique", "Journal de rêves", "Analyse psychologique"],
+    status: "development",
+    progress: 30
   },
   {
     id: 9,
@@ -147,9 +206,24 @@ const availablePlugins = ref([
     icon: "😊",
     image: emotionImg,
     category: "Psychologie",
-    features: ["Détection faciale", "Analyse vocale", "Suivi émotionnel"]
+    features: ["Détection faciale", "Analyse vocale", "Suivi émotionnel"],
+    status: "development",
+    progress: 85
   }
 ])
+
+const filteredPlugins = computed(() => {
+  if (statusFilter.value === 'all') return availablePlugins.value
+  return availablePlugins.value.filter(plugin => plugin.status === statusFilter.value)
+})
+
+const completedPlugins = computed(() => 
+  availablePlugins.value.filter(plugin => plugin.status === 'completed')
+)
+
+const developmentPlugins = computed(() => 
+  availablePlugins.value.filter(plugin => plugin.status === 'development')
+)
 </script>
 
 <style scoped>
@@ -184,6 +258,46 @@ const availablePlugins = ref([
 .container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.filters-section {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.filters-section h3 {
+  color: var(--color-heading);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.status-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-text);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.filter-btn.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
 }
 
 .plugins-grid {
@@ -240,6 +354,74 @@ const availablePlugins = ref([
   object-position: center 30%;
   border-radius: 0;
   filter: none;
+}
+
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.status-badge.completed {
+  background: rgba(34, 197, 94, 0.9);
+  color: white;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+}
+
+.status-badge.development {
+  background: rgba(251, 191, 36, 0.9);
+  color: white;
+  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+}
+
+.status-icon {
+  font-size: 1rem;
+}
+
+.progress-section {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(251, 191, 36, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-heading);
+}
+
+.progress-percentage {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.progress-bar {
+  background: var(--color-background-mute);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s ease;
 }
 
 .plugin-content {
@@ -342,6 +524,16 @@ const availablePlugins = ref([
   
   .plugin-content {
     padding: 1.5rem;
+  }
+  
+  .status-filters {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .filter-btn {
+    width: 100%;
+    max-width: 250px;
   }
 }
 </style>

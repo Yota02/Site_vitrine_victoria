@@ -16,7 +16,7 @@
     <div class="container">
       <div class="header-content">
         <h1 class="title">VictorIA</h1>
-        <p class="subtitle">Intelligence Artificielle Utilitaire de Nouvelle Génération</p>
+        <p class="subtitle">Intelligence Artificielle Utilitaire</p>
         <p class="description">
           Découvrez VictorIA, votre assistant IA personnel qui fonctionne entièrement sur votre machine locale. 
           Aucune connexion internet requise, vos données restent privées et sécurisées chez vous.
@@ -69,10 +69,6 @@
           <router-link to="/plugins" class="btn-primary">
             <span class="btn-icon">🔧</span>
             Découvrir les Outils
-          </router-link>
-          <router-link to="/contact" class="btn-secondary">
-            <span class="btn-icon">📧</span>
-            Nous Contacter
           </router-link>
         </div>
       </div>
