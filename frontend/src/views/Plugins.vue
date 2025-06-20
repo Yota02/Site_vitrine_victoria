@@ -181,7 +181,7 @@ const availablePlugins = ref([
     features: ["Planification IA", "Rappels intelligents", "Optimisation d'agenda"],
     /* status: "completed", */
     status: "development",
-    progress: 0
+    progress: 40
   },
   {
     id: 7,
