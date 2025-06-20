@@ -41,7 +41,7 @@
               </div>
             </section>
             
-            <section class="use-cases">
+            <!-- <section class="use-cases">
               <h2>Cas d'usage</h2>
               <div class="use-cases-list">
                 <div v-for="useCase in plugin.useCases" :key="useCase.title" class="use-case">
@@ -49,17 +49,10 @@
                   <p>{{ useCase.description }}</p>
                 </div>
               </div>
-            </section>
+            </section> -->
           </div>
           
           <div class="sidebar">
-            <div class="action-card">
-              <h3>Commencer</h3>
-              <p>Essayez ce plugin dès maintenant</p>
-              <button class="btn-install">Installer le plugin</button>
-              <button class="btn-demo">Voir la démo</button>
-            </div>
-            
             <div class="info-card">
               <h3>Informations</h3>
               <div class="info-item">
@@ -70,9 +63,6 @@
               </div>
               <div class="info-item">
                 <strong>Développeur:</strong> {{ plugin.developer }}
-              </div>
-              <div class="info-item">
-                <strong>Support:</strong> {{ plugin.support }}
               </div>
             </div>
           </div>
@@ -109,46 +99,33 @@ const route = useRoute()
 
 const pluginsData = {
   musique: {
-    id: 1,
+    id: 9,
     name: "Plugin Musique",
-    description: "Lecture et composition de partitions avec piano virtuel",
+    description: "Victoria peut jouer a des instruments et lire des partitions musicales",
     icon: "🎵",
     image: musiqueImg,
     category: "Créatif",
-    price: "Gratuit",
-    version: "2.1.0",
-    lastUpdate: "15 Décembre 2024",
-    developer: "VictorIA Team",
-    support: "24/7",
-    status: "completed",
-    overview: "Notre plugin Musique utilise l'intelligence artificielle pour révolutionner la création musicale. Que vous soyez compositeur débutant ou expert, cet outil vous accompagne dans toutes les étapes de la création musicale, de la génération d'idées à l'arrangement final.",
+    version: "0.1.0",
+    lastUpdate: "16 Juin 2025",
+    developer: "NeoNekoTech",
+    status: "development",
+    progress: 60,
+    overview: "Notre plugin Musique utilise l'intelligence artificielle pour révolutionner la création musicale. L'IA peut jouer différents instruments et interpréter des partitions musicales avec une précision remarquable.",
     detailedFeatures: [
       {
-        name: "Composition automatique",
-        icon: "🎼",
-        description: "Génération de mélodies, harmonies et arrangements complets basés sur vos préférences stylistiques."
-      },
-      {
-        name: "Analyse harmonique",
-        icon: "🔍",
-        description: "Analyse détaillée de vos compositions avec suggestions d'amélioration et de progression harmonique."
-      },
-      {
-        name: "Génération de mélodies",
+        name: "Jeu aux instruments",
         icon: "🎹",
-        description: "Création de mélodies originales dans différents styles musicaux avec personnalisation avancée."
+        description: "Victoria peut jouer virtuellement différents instruments de musique avec une technique avancée."
       },
       {
-        name: "Orchestration intelligente",
-        icon: "🎺",
-        description: "Arrangement automatique pour différents instruments avec respect des règles d'orchestration."
-      }
+        name: "Lecture de partitions",
+        icon: "🎼",
+        description: "Interprétation et lecture automatique de partitions musicales dans différents formats."
+      },
     ],
     technicalSpecs: [
       { label: "Formats supportés", value: "MIDI, WAV, MP3, FLAC" },
-      { label: "Instruments virtuels", value: "200+ instruments" },
-      { label: "Styles musicaux", value: "50+ genres" },
-      { label: "Intégration DAW", value: "Compatible VST/AU" }
+      { label: "Instruments virtuels", value: "Piano / Violon" },
     ],
     useCases: [
       {
@@ -168,42 +145,31 @@ const pluginsData = {
   chant: {
     id: 2,
     name: "Plugin Chant",
-    description: "Analyse vocale et assistance pour l'amélioration du chant",
+    description: "Victoria peut chanter des chansons et créer des performances vocales",
     icon: "🎤",
     image: chantImg,
     category: "Créatif",
     price: "19€/mois",
-    version: "1.8.3",
-    lastUpdate: "10 Décembre 2024",
-    developer: "VictorIA Team",
-    support: "Lun-Ven 9h-18h",
-    status: "completed",
-    overview: "Le plugin Chant est votre coach vocal personnel alimenté par l'IA. Il analyse votre voix en temps réel, identifie les points d'amélioration et propose des exercices personnalisés pour développer votre technique vocale.",
+    version: "0.0.0",
+    lastUpdate: "A definir",
+    developer: "NeoNekoTech",
+    status: "development",
+    progress: 0,
+    overview: "Le plugin Chant permet à l'IA de chanter des chansons et de créer des performances vocales expressives.",
     detailedFeatures: [
       {
-        name: "Analyse de la voix",
-        icon: "📊",
-        description: "Analyse spectrale complète de votre voix avec détection des fréquences, vibrato et dynamiques."
+        name: "Chant par l'IA",
+        icon: "🎤",
+        description: "L'IA peut interpréter vocalement différents styles de chansons avec expression."
       },
       {
-        name: "Correction de pitch",
-        icon: "🎯",
-        description: "Détection automatique des notes fausses avec suggestions de correction en temps réel."
+        name: "Performance vocale",
+        icon: "🎭",
+        description: "Création de performances vocales complètes avec dynamiques et émotions."
       },
-      {
-        name: "Exercices vocaux",
-        icon: "💪",
-        description: "Programme d'exercices personnalisé basé sur votre niveau et vos objectifs vocaux."
-      },
-      {
-        name: "Coaching IA",
-        icon: "🤖",
-        description: "Assistant vocal intelligent qui vous guide dans votre progression avec des conseils personnalisés."
-      }
     ],
     technicalSpecs: [
       { label: "Analyse fréquentielle", value: "20Hz - 20kHz" },
-      { label: "Latence", value: "< 10ms" },
       { label: "Précision pitch", value: "±1 cent" },
       { label: "Formats audio", value: "WAV, MP3, M4A" }
     ],
@@ -225,44 +191,36 @@ const pluginsData = {
   gaming: {
     id: 3,
     name: "Plugin Gaming",
-    description: "Outils de développement et d'assistance pour les jeux vidéo",
+    description: "L'IA peut jouer à différents jeux vidéo et défier les utilisateurs",
     icon: "🎮",
     image: gamingImg,
     category: "Divertissement",
     price: "29€/mois",
-    version: "3.2.1",
-    lastUpdate: "20 Décembre 2024",
-    developer: "VictorIA Team",
-    support: "24/7",
+    version: "0.0.0",
+    lastUpdate: "A definir",
+    developer: "NeoNekoTech",
     status: "development",
-    progress: 75,
-    overview: "Le plugin Gaming révolutionne le développement de jeux vidéo en intégrant l'IA à chaque étape. De la génération procédurale de contenu à l'analyse comportementale des joueurs, cet outil complet accompagne les développeurs et les joueurs.",
+    progress: 0,
+    overview: "Le plugin Gaming permet à Victoria de jouer à différents jeux vidéo et de défier les utilisateurs. Une expérience de jeu avec une IA compétitive.",
     detailedFeatures: [
       {
-        name: "IA de jeu",
+        name: "Jeu par l'IA",
+        icon: "🎮",
+        description: "L'IA peut jouer activement à différents types de jeux vidéo avec stratégie."
+      },
+      {
+        name: "Stratégies adaptatives",
         icon: "🧠",
-        description: "Création d'IA adverses intelligentes et adaptatives pour des expériences de jeu dynamiques."
+        description: "Développement de stratégies intelligentes qui s'adaptent au style de jeu."
       },
       {
-        name: "Génération de niveaux",
-        icon: "🏗️",
-        description: "Génération procédurale de niveaux, terrains et donjons avec équilibrage automatique."
-      },
-      {
-        name: "Analytics de gameplay",
-        icon: "📈",
-        description: "Analyse comportementale des joueurs avec optimisation de l'expérience utilisateur."
-      },
-      {
-        name: "Assistant de développement",
-        icon: "⚙️",
-        description: "Outils de développement intelligents pour la programmation et le debug de jeux."
+        name: "Défis multijoueurs",
+        icon: "⚔️",
+        description: "Possibilité de défier les utilisateurs dans des matchs compétitifs."
       }
     ],
     technicalSpecs: [
-      { label: "Moteurs supportés", value: "Unity, Unreal, Godot" },
-      { label: "Langages", value: "C#, C++, Python, GDScript" },
-      { label: "Plateforme", value: "PC, Console, Mobile" },
+      { label: "Plateforme", value: "PC " },
       { label: "API intégration", value: "REST, WebSocket" }
     ],
     useCases: [
@@ -283,42 +241,36 @@ const pluginsData = {
   peinture: {
     id: 4,
     name: "Plugin Peinture",
-    description: "Assistance créative pour la peinture digitale et traditionnelle",
+    description: "Victoria peut créer des œuvres d'art et peindre dans différents styles",
     icon: "🎨",
     image: peintureImg,
     category: "Créatif",
     price: "24€/mois",
-    version: "2.5.0",
-    lastUpdate: "18 Décembre 2024",
-    developer: "VictorIA Team",
-    support: "Lun-Sam 8h-20h",
+    version: "0.0.0",
+    lastUpdate: "A definir",
+    developer: "NeoNekoTech",
     status: "development",
-    progress: 60,
-    overview: "Le plugin Peinture est votre mentor artistique numérique. Il analyse votre style, propose des améliorations et vous guide dans l'exploration de nouvelles techniques picturales, que vous peigniez sur toile ou sur écran.",
+    progress: 0,
+    overview: "Le plugin Peinture permet à Victoria de créer des œuvres d'art originales et de peindre dans différents styles artistiques. Un compagnon créatif pour l'art numérique.",
     detailedFeatures: [
       {
-        name: "Palette de couleurs intelligente",
-        icon: "🌈",
-        description: "Génération automatique de palettes harmonieuses basées sur la théorie des couleurs."
+        name: "Peinture par l'IA",
+        icon: "🎨",
+        description: "Création automatique d'œuvres picturales avec techniques artistiques variées."
       },
       {
-        name: "Analyse de style",
-        icon: "🔍",
-        description: "Reconnaissance et analyse de votre style artistique avec suggestions d'évolution."
+        name: "Styles artistiques",
+        icon: "🖼️",
+        description: "Maîtrise de différents styles artistiques classiques et contemporains."
       },
       {
-        name: "Assistant composition",
-        icon: "📐",
-        description: "Aide à la composition avec règles de proportion, perspective et équilibre visuel."
-      },
-      {
-        name: "Critique constructive",
-        icon: "💬",
-        description: "Feedback intelligent sur vos œuvres avec conseils d'amélioration personnalisés."
+        name: "Création d'œuvres",
+        icon: "✨",
+        description: "Génération d'œuvres d'art originales avec composition et harmonie des couleurs."
       }
     ],
     technicalSpecs: [
-      { label: "Logiciels compatibles", value: "Photoshop, Illustrator, Procreate" },
+
       { label: "Formats d'image", value: "PNG, JPG, PSD, AI, SVG" },
       { label: "Résolution max", value: "8K (7680×4320)" },
       { label: "Modèles IA", value: "Réseaux de neurones convolutifs" }
@@ -341,44 +293,32 @@ const pluginsData = {
   meteo: {
     id: 5,
     name: "Plugin Météo",
-    description: "Prévisions météorologiques avancées et analyses climatiques",
+    description: "Victoria vous informe de la météo du jour et de la semaine",
     icon: "🌤️",
     image: meteoImg,
     category: "Utilitaire",
     price: "Gratuit",
-    version: "4.1.2",
-    lastUpdate: "22 Décembre 2024",
-    developer: "VictorIA Team",
-    support: "Communauté",
-    status: "completed",
-    overview: "Le plugin Météo utilise l'intelligence artificielle pour fournir des prévisions météorologiques ultra-précises. En analysant des milliers de données climatiques, il prédit les conditions météo avec une précision inégalée.",
+    version: "0.1.0",
+    lastUpdate: "15 Juin 2025",
+    developer: "NeoNekoTech",
+    status: "development",
+    progress: 40,
+    overview: "Le plugin Météo permet à l'IA d'avoir conscience des conditions météorologiques et de vous informer avec des annonces personnalisées sur le temps qu'il fait.",
     detailedFeatures: [
       {
-        name: "Prévisions IA",
-        icon: "🔮",
-        description: "Prévisions météorologiques basées sur l'apprentissage automatique avec précision de 95%."
+        name: "Annonce météo par l'IA",
+        icon: "📻",
+        description: "L'IA annonce la météo avec conscience des conditions climatiques actuelles."
       },
       {
-        name: "Alertes intelligentes",
-        icon: "⚠️",
-        description: "Système d'alerte personnalisé selon vos activités et votre localisation."
+        name: "Prévisions personnalisées",
+        icon: "🎯",
+        description: "Prévisions adaptées à vos activités avec conseils personnalisés."
       },
-      {
-        name: "Analyse climatique",
-        icon: "📊",
-        description: "Analyse des tendances climatiques à long terme avec visualisations interactives."
-      },
-      {
-        name: "Microclimats",
-        icon: "🏠",
-        description: "Prévisions hyper-locales avec analyse des microclimats urbains et ruraux."
-      }
     ],
     technicalSpecs: [
-      { label: "Sources de données", value: "50+ stations météo" },
       { label: "Fréquence MAJ", value: "Toutes les 15 minutes" },
       { label: "Couverture", value: "Mondiale" },
-      { label: "Historique", value: "10 ans de données" }
     ],
     useCases: [
       {
@@ -403,13 +343,12 @@ const pluginsData = {
     image: calendrierImg,
     category: "Productivité",
     price: "15€/mois",
-    version: "3.0.4",
-    lastUpdate: "16 Décembre 2024",
-    developer: "VictorIA Team",
-    support: "24/7",
+    version: "0.0.0",
+    lastUpdate: "A definir",
+    developer: "NeoNekoTech",
     status: "development",
-    progress: 45,
-    overview: "Le plugin Calendrier révolutionne la gestion du temps en utilisant l'IA pour optimiser automatiquement votre planning. Il apprend de vos habitudes et propose des créneaux optimaux pour vos activités.",
+    progress: 0,
+    overview: "Le plugin Calendrier permet la gestion du temps en utilisant l'IA pour optimiser automatiquement votre planning. Il apprend de vos habitudes et propose des créneaux optimaux pour vos activités.",
     detailedFeatures: [
       {
         name: "Planification IA",
@@ -436,7 +375,6 @@ const pluginsData = {
       { label: "Synchronisation", value: "Google, Outlook, Apple" },
       { label: "Plateformes", value: "Web, iOS, Android" },
       { label: "Intégrations", value: "Slack, Teams, Zoom" },
-      { label: "Stockage", value: "Cloud sécurisé" }
     ],
     useCases: [
       {
@@ -461,169 +399,99 @@ const pluginsData = {
     image: convertisseurImg,
     category: "Utilitaire",
     price: "Gratuit",
-    version: "2.3.1",
-    lastUpdate: "14 Décembre 2024",
-    developer: "VictorIA Team",
-    support: "Communauté",
-    status: "completed",
-    overview: "Le plugin Convertisseur est votre outil universel de conversion. Alimenté par l'IA, il reconnaît automatiquement les unités et formats, propose des conversions contextuelles et maintient une précision maximale.",
+    version: "0.0.0",
+    lastUpdate: "A definir",
+    developer: "NeoNekoTech",
+    status: "development",
+    progress: 0,
+    overview: "Le plugin Convertisseur offre des capacités de conversion universelle pour les unités, devises et formats de fichiers avec une précision maximale.",
     detailedFeatures: [
       {
-        name: "Reconnaissance automatique",
-        icon: "🧠",
-        description: "Détection intelligente des unités et formats à partir du contexte."
+        name: "Multi-devises",
+        icon: "💱",
+        description: "Conversion de devises en temps réel avec taux de change actualisés."
       },
       {
-        name: "Conversions contextuelles",
-        icon: "🎯",
-        description: "Suggestions de conversions pertinentes selon votre domaine d'activité."
+        name: "Unités physiques",
+        icon: "📏",
+        description: "Conversion complète d'unités de mesure physiques et scientifiques."
       },
       {
-        name: "Taux en temps réel",
-        icon: "⚡",
-        description: "Taux de change et données financières mis à jour en temps réel."
-      },
-      {
-        name: "Historique intelligent",
-        icon: "📊",
-        description: "Mémorisation de vos conversions fréquentes avec suggestions proactives."
+        name: "Formats de fichiers",
+        icon: "📄",
+        description: "Conversion entre différents formats de fichiers et encodages."
       }
     ],
     technicalSpecs: [
       { label: "Types d'unités", value: "500+ unités" },
       { label: "Devises", value: "180+ monnaies" },
       { label: "Formats fichiers", value: "100+ formats" },
-      { label: "Précision", value: "15 décimales" }
-    ],
-    useCases: [
-      {
-        title: "Professionnels techniques",
-        description: "Convertissez rapidement les unités techniques dans vos projets d'ingénierie."
-      },
-      {
-        title: "Voyageurs",
-        description: "Convertissez facilement les devises et unités locales lors de vos déplacements."
-      },
-      {
-        title: "Étudiants",
-        description: "Outil indispensable pour les exercices de physique, chimie et mathématiques."
-      }
     ]
   },
   reve: {
     id: 8,
     name: "Plugin Rêve",
-    description: "Analyse et interprétation des rêves avec IA",
+    description: "L'IA fait des rêves et gère sa mémoire à travers des expériences oniriques",
     icon: "💭",
     image: reveImg,
     category: "Bien-être",
     price: "12€/mois",
-    version: "1.6.7",
-    lastUpdate: "12 Décembre 2024",
-    developer: "VictorIA Team",
-    support: "Lun-Ven 10h-16h",
+    version: "0.2.0",
+    lastUpdate: "13 Juin 2025",
+    developer: "NeoNekoTech",
     status: "development",
-    progress: 30,
-    overview: "Le plugin Rêve explore l'univers mystérieux de vos songes. Utilisant l'IA et la psychologie moderne, il analyse vos rêves, identifie les patterns récurrents et propose des interprétations personnalisées.",
+    progress: 45,
+    overview: "Le plugin Rêve permet à l'IA de faire des rêves artificiels et de gérer sa mémoire à travers des expériences oniriques simulées.",
     detailedFeatures: [
       {
-        name: "Journal de rêves intelligent",
-        icon: "📔",
-        description: "Enregistrement et catégorisation automatique de vos rêves avec analyse des émotions."
+        name: "Rêves de l'IA",
+        icon: "💭",
+        description: "Simulation d'expériences oniriques artificielles pour l'IA avec narratifs complexes."
       },
       {
-        name: "Interprétation symbolique",
-        icon: "🔮",
-        description: "Analyse des symboles oniriques basée sur la psychanalyse et les archétypes universels."
+        name: "Gestion mémoire",
+        icon: "🧠",
+        description: "Optimisation de la mémoire de l'IA à travers les processus de rêve simulés."
       },
-      {
-        name: "Patterns récurrents",
-        icon: "🔄",
-        description: "Détection des thèmes récurrents et évolution de votre univers onirique."
-      },
-      {
-        name: "Méditation guidée",
-        icon: "🧘",
-        description: "Séances de méditation personnalisées pour améliorer la qualité de vos rêves."
-      }
     ],
     technicalSpecs: [
-      { label: "Base de symboles", value: "5000+ symboles" },
-      { label: "Langues supportées", value: "12 langues" },
       { label: "Stockage", value: "Chiffré local" },
       { label: "Modèles IA", value: "Traitement du langage naturel" }
-    ],
-    useCases: [
-      {
-        title: "Développement personnel",
-        description: "Explorez votre inconscient et développez votre connaissance de soi à travers vos rêves."
-      },
-      {
-        title: "Créatifs",
-        description: "Puisez l'inspiration dans vos rêves pour vos créations artistiques et littéraires."
-      },
-      {
-        title: "Thérapeutes",
-        description: "Outil d'accompagnement pour l'analyse des rêves en thérapie psychanalytique."
-      }
     ]
   },
   emotion: {
-    id: 9,
+    id: 1,
     name: "Plugin Émotion",
-    description: "Reconnaissance et analyse des émotions en temps réel",
+    description: "L'IA simule et affiche des émotions de manière expressive",
     icon: "😊",
     image: emotionImg,
     category: "Psychologie",
     price: "18€/mois",
-    version: "2.9.3",
-    lastUpdate: "19 Décembre 2024",
-    developer: "VictorIA Team",
-    support: "24/7",
-    status: "development",
-    progress: 85,
-    overview: "Le plugin Émotion est votre compagnon émotionnel intelligent. Il analyse vos expressions, votre voix et vos textes pour comprendre votre état émotionnel et vous propose des stratégies d'amélioration de votre bien-être.",
+    version: "1.0.0",
+    lastUpdate: "12 Juin 2025",
+    developer: "NeoNekoTech",
+    status: "completed",
+    overview: "Le plugin Émotion permet à l'IA de simuler et d'afficher des émotions de manière expressive, créant des interactions plus naturelles et empathiques.",
     detailedFeatures: [
       {
-        name: "Détection faciale",
+        name: "Simulation d'émotions",
+        icon: "🎭",
+        description: "Simulation réaliste d'états émotionnels variés avec expressions authentiques."
+      },
+      {
+        name: "Affichage expressif",
         icon: "😊",
-        description: "Reconnaissance des micro-expressions et analyse émotionnelle par vision par ordinateur."
+        description: "Manifestation visuelle et comportementale des émotions de l'IA."
       },
       {
-        name: "Analyse vocale",
-        icon: "🎙️",
-        description: "Détection des émotions dans la voix avec analyse prosodique avancée."
-      },
-      {
-        name: "Suivi émotionnel",
-        icon: "📊",
-        description: "Monitoring continu de votre état émotionnel avec tendances et insights personnalisés."
-      },
-      {
-        name: "Coaching émotionnel",
-        icon: "🤗",
-        description: "Suggestions personnalisées pour améliorer votre régulation émotionnelle."
+        name: "Réactions émotionnelles",
+        icon: "💝",
+        description: "Réactions émotionnelles adaptatives aux situations et interactions."
       }
     ],
     technicalSpecs: [
-      { label: "Précision détection", value: "94% exactitude" },
-      { label: "Latence", value: "< 100ms" },
-      { label: "Émotions détectées", value: "27 émotions" },
-      { label: "Caméra requise", value: "HD 720p minimum" }
-    ],
-    useCases: [
-      {
-        title: "Bien-être personnel",
-        description: "Développez votre intelligence émotionnelle et améliorez votre gestion du stress."
-      },
-      {
-        title: "Professionnels RH",
-        description: "Évaluez le bien-être des équipes et optimisez l'environnement de travail."
-      },
-      {
-        title: "Recherche comportementale",
-        description: "Outil d'analyse pour les études en psychologie et sciences comportementales."
-      }
+      { label: "Précision détection", value: "98% exactitude" },
+      { label: "Émotions détectées", value: "15 émotions" },
     ]
   }
 }
