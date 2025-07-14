@@ -5,6 +5,8 @@ import Contact from '../views/Contact.vue'
 import Plugins from '../views/Plugins.vue'
 import PluginDetail from '../views/PluginDetail.vue'
 import Research from '../views/Research.vue'
+import Compatibility from '../views/Compatibility.vue'
+import SoftwareDetail from '../views/SoftwareDetail.vue'
 
 const routes = [
   {
@@ -53,6 +55,22 @@ const routes = [
     component: Research,
     meta: {
       title: 'Recherches - IA Conversationnelle'
+    }
+  },
+  {
+    path: '/compatibility',
+    name: 'Compatibility',
+    component: Compatibility,
+    meta: {
+      title: 'Compatibilité - IA Conversationnelle'
+    }
+  },
+  {
+    path: '/software/:slug',
+    name: 'SoftwareDetail',
+    component: SoftwareDetail,
+    meta: {
+      title: 'Logiciel - IA Conversationnelle'
     }
   }
 ]

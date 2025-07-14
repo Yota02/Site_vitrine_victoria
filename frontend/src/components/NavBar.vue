@@ -73,6 +73,21 @@
           </router-link>
           
           <router-link 
+            to="/compatibility" 
+            class="nav-item" 
+            :class="{ 'active': $route.path === '/compatibility' }"
+          >
+            <div class="nav-icon-wrapper">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                <line x1="4" y1="22" x2="4" y2="15"/>
+              </svg>
+            </div>
+            <span class="nav-text">Compatibilité</span>
+            <div class="nav-indicator"></div>
+          </router-link>
+          
+          <router-link 
             to="/contact" 
             class="nav-item" 
             :class="{ 'active': $route.path === '/contact' }"
@@ -144,6 +159,21 @@
               </svg>
             </div>
             <span class="mobile-nav-text">Recherches</span>
+          </router-link>
+          
+          <router-link 
+            to="/compatibility" 
+            class="mobile-nav-item" 
+            :class="{ 'active': $route.path === '/compatibility' }"
+            @click="closeMobileMenu"
+          >
+            <div class="mobile-nav-icon-wrapper">
+              <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                <line x1="4" y1="22" x2="4" y2="15"/>
+              </svg>
+            </div>
+            <span class="mobile-nav-text">Compatibilité</span>
           </router-link>
           
           <router-link 
